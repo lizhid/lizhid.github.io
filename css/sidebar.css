@@ -1,0 +1,108 @@
+.sidebar {
+  background: #ddd;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+  -webkit-flex-basis: 25%;
+  flex-basis: 25%;
+  width: 25%;
+  padding: 0;
+  word-wrap: break-word;
+}
+.sidebar .search {
+  height: 2.5em;
+  display: block;
+  text-align: center;
+  background: #006bde;
+  color: #fff;
+  padding-top: 0.5em;
+}
+.sidebar .search input {
+  width: 60%;
+  height: 1.5em;
+  border: 0.1em solid transparent;
+  border-bottom: 0.1em dashed #fff;
+  background: #006bde;
+  color: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.sidebar .search input:focus {
+  outline: none;
+  border-bottom: 0.1em solid #fff;
+}
+.sidebar .search input::placeholder {
+  color: #fff;
+  padding-left: 0.5em;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+}
+.sidebar .search-result-box {
+  background: #fff;
+  word-warp: break-word;
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  -o-transition: 0.3s ease-in-out;
+  -ms-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+.sidebar .search-result-box .search-result-list {
+  margin-top: 0;
+  padding: 1em 2em;
+}
+.sidebar .sidebar-item {
+  margin: 2em;
+}
+.sidebar .rss {
+  display: block;
+  text-align: center;
+  font-size: 1.5em;
+  color: $color-link-index-button;
+  background: #fc6423;
+  margin: 1em;
+  padding: 0.2em;
+}
+.sidebar hr {
+  margin: 2em 0;
+  height: 0.3em;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  position: relative;
+  display: block;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background-color: #ddd;
+  background-image: -webkit-repeating-linear-gradient(135deg, #fff, #fff 0.25em, transparent 0.25em, transparent 0.5em);
+  background-image: -moz-repeating-linear-gradient(135deg, #fff, #fff 0.25em, transparent 0.25em, transparent 0.5em);
+  background-image: -o-repeating-linear-gradient(135deg, #fff, #fff 0.25em, transparent 0.25em, transparent 0.5em);
+  background-image: -ms-repeating-linear-gradient(135deg, #fff, #fff 0.25em, transparent 0.25em, transparent 0.5em);
+  background-image: repeating-linear-gradient(-45deg, #fff, #fff 0.25em, transparent 0.25em, transparent 0.5em);
+}
+@media (max-width: 48em) {
+  .sidebar {
+    width: 100%;
+  }
+  .sidebar .sidebar-item {
+    text-align: center;
+  }
+  .sidebar ul li {
+    display: inline-block;
+    margin: 0.5em 1em;
+  }
+  .sidebar .post-toc ol {
+    text-align: left;
+  }
+}
