@@ -50,7 +50,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,47 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-关于ios指纹登陆功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/01/关于ios指纹登陆功能/" class="article-date">
+  <time datetime="2018-04-01T10:10:37.077Z" itemprop="datePublished">2018-04-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于ios指纹登陆功能"><a href="#关于ios指纹登陆功能" class="headerlink" title="关于ios指纹登陆功能"></a>关于ios指纹登陆功能</h2><h3 id="设置指纹："><a href="#设置指纹：" class="headerlink" title="设置指纹："></a>设置指纹：</h3><p>要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bol,eCode =native:canAuthenticate();</span><br><span class="line"><span class="keyword">if</span> bol == <span class="literal">false</span> and eCode == <span class="number">-7</span>  then</span><br><span class="line">    alert(<span class="string">"您尚未设置Touch ID，请先在手机系统“设置-Touch ID与密码”中添加指纹。"</span>);</span><br><span class="line">elseif bol == <span class="literal">true</span> then  --access_token开通指纹时生成</span><br><span class="line">    --可以做开通指纹的方法</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>为了更严谨点，当把access_token保存在客户端本地时，顺便也把access_token保持在数据库中，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--请求接口开通指纹，接口会返回access_token，yxts（有效天数），rzlx（认证类型）</span><br><span class="line">access_token=access_token[&quot;value&quot;];</span><br><span class="line">yxts=yxts[&quot;value&quot;];</span><br><span class="line">if database:getData(userid) == &quot;&quot; or database:getData(userid) == nil then</span><br><span class="line">	zhiwen_password=yxts..&quot;|&quot;..FRM_time..&quot;|&quot;..rzlx;</span><br><span class="line">else                 					  	          			   zhiwen_password=database:getData(userid)..&quot;rytong&quot;..yxts..&quot;|&quot;..FRM_time..&quot;|&quot;..rzlx;</span><br><span class="line">end</span><br><span class="line">native:storeKeyAndSecret(&quot;access_token_key&quot;, access_token, 	&quot;access_token_serviceData&quot;);--ios把access_token用 storeKeyAndSecret保存</span><br><span class="line">database:addData(&quot;access_token_key&quot;, access_token);  --安卓保存在数据库中，现在ios也一起保存数据库中，</span><br><span class="line">database:addData(userid, zhiwen_password);</span><br></pre></td></tr></table></figure>
+<p>还要把指纹有效期（90天）、设置开通指纹时的时间、登陆认证类型（主要是区分指纹还是手势）拼接成一个字段进行保存（zhiwen_password），</p>
+<h2 id="登陆验证指纹："><a href="#登陆验证指纹：" class="headerlink" title="登陆验证指纹："></a>登陆验证指纹：</h2><p>设置完用指纹登陆后，这个时候回到登陆界面就可以用指纹进行登录了</p>
+<p>登陆验证时先验证有效期过了没有，如果设置指纹时间超过90天则报错说</p>
+<p><code>因您长时间未使用指纹登录，请先通过验证密码登录，成功登录后下次登录时可继续使用指纹登录。</code></p>
+<p>反之进行下一步验证，调用客户端方法native:authenticate()，验证时会有传两个值给后台，方案图如下：</p>
+<p><img src="E:\hexo\blog\public\img\zw.png" alt=""></p>
+<p>部分代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if val1 == false then</span><br><span class="line">    if val2 == -3 or val2 == -6 or val2 == -10 or val2 == -1004 then  --点击验证密码, -6是该设备没有指纹功能,-10会话不可用，-1004身份验证失败，因为他需要显示已被禁止的UI</span><br><span class="line">    elseif val2 == -2 or val2 == -9 or val2 == -4 then -- -2点击取消,-9按home键取消，-4来电话的情况</span><br><span class="line">    elseif val2 == -7 or val2 == -5 then -- 没有设置指纹   -5关闭了指纹</span><br><span class="line">    elseif val2 == -8 then -- -8被锁了</span><br><span class="line">    elseif val2 == -1 then  -- -1, 错误输入超过三次</span><br><span class="line">    elseif val2 == 100 then  --您设备的TouchID发生了变化，请使用密码登录。</span><br><span class="line">    end</span><br><span class="line">elseif val1 == true then  --验证指纹成功</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>具体方法就不贴出来了，不同的app可能走的方法也不同，只是把大概的流程判断给贴出来。</p>
+<p>验证成功的那一步还需要做个判断，因为有可能之前保存在客户端的access_token因为某些原因丢失，所以要判断access_token是否为空，如果为空就取设置时保存在数据库中的access_token，如果能取到值，那就把这个值送给接口，登陆成功后把这个值再次保存在客户端本地。如果从数据库还依然取不到access_token，那就只能提示用户使用密码登陆了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">local access_token=native:getSecretByKey(&quot;access_token_key&quot;, &quot;access_token_serviceData&quot;);  --取出保存在客户端的access_token</span><br><span class="line">if access_token == &quot;&quot; or access_token == nil then</span><br><span class="line">	local access_token = database:getData(&quot;access_token_key&quot;);    --从客户端取不到的话就从数据库取</span><br><span class="line">	if access_token == &quot;&quot; or access_token == nil then</span><br><span class="line">        local  userid=gzjzl..gzjhm;              --数据库还取不到的话就提示用户用密码登录</span><br><span class="line">        database:addData(userid, &quot;&quot;);</span><br><span class="line">		cmm_unit_fun.public:alert(&quot;指纹密钥已丢失,请使用密码登录&quot;,&quot;确定&quot;,</span><br><span class="line">        function(index)</span><br><span class="line">        changelogin();</span><br><span class="line">        location:reload();</span><br><span class="line">        end);</span><br><span class="line">	else</span><br><span class="line">        native:storeKeyAndSecret(&quot;access_token_key&quot;, access_token, &quot;access_token_serviceData&quot;);--ios把access_token用 storeKeyAndSecret保存</span><br><span class="line">       --这里写把值传给接口的方法 </span><br><span class="line">     end</span><br><span class="line">else</span><br><span class="line">   --这里写把值传给接口的方法</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/01/关于ios指纹登陆功能/" data-id="cjfhtgbsq0000hkydw7va1v0h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-xxx" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -94,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/27/xxx/" data-id="cjf7ym2f20000rwydljo1a0li" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/27/xxx/" data-id="cjf7ym2f20000rwydljo1a0li" class="article-share-link">Share</a>
       
       
     </footer>
@@ -132,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/26/My-secondtwo/" data-id="cjf7xjf6j00001wydcukjnq62" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/26/My-secondtwo/" data-id="cjf7xjf6j00001wydcukjnq62" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/My-second/" data-id="cjf3o2nqu00028cyd0imnqqq1" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/My-second/" data-id="cjf3o2nqu00028cyd0imnqqq1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -330,7 +371,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/My-first/" data-id="cjf3o2nqk00008cydon5fu7cf" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/My-first/" data-id="cjf3o2nqk00008cydon5fu7cf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +416,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/23/hello-world/" data-id="cjf3o2nqr00018cydidjc19vy" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/03/23/hello-world/" data-id="cjf3o2nqr00018cydidjc19vy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -401,9 +442,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
     </div>
   </div>
 
@@ -411,9 +452,13 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/04/01/关于ios指纹登陆功能/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2018/03/27/xxx/">Markdown 语法和 MWeb 写作使用说明</a>
@@ -429,10 +474,6 @@
         
           <li>
             <a href="/2018/03/23/My-first/">My first</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/23/hello-world/">Hello World</a>
           </li>
         
       </ul>
