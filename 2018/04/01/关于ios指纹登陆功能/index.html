@@ -5,20 +5,20 @@
   
 
   
-  <title>Hexo</title>
+  <title>关于ios指纹登陆功能 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于ios指纹登陆功能设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="关于ios指纹登陆功能">
 <meta property="og:url" content="http://yoursite.com/2018/04/01/关于ios指纹登陆功能/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="关于ios指纹登陆功能设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,">
-<meta property="og:image" content="e:/hexo/blog/public/img/zw.png">
-<meta property="og:updated_time" content="2018-04-01T10:36:39.671Z">
+<meta property="og:image" content="http://yoursite.com/img/zw.png">
+<meta property="og:updated_time" content="2018-04-02T06:11:14.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="关于ios指纹登陆功能">
 <meta name="twitter:description" content="关于ios指纹登陆功能设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,">
-<meta name="twitter:image" content="e:/hexo/blog/public/img/zw.png">
+<meta name="twitter:image" content="http://yoursite.com/img/zw.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -68,12 +68,22 @@
         <section id="main"><article id="post-关于ios指纹登陆功能" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/01/关于ios指纹登陆功能/" class="article-date">
-  <time datetime="2018-04-01T10:10:37.077Z" itemprop="datePublished">2018-04-01</time>
+  <time datetime="2018-04-01T06:13:52.000Z" itemprop="datePublished">2018-04-01</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于ios指纹登陆功能
+    </h1>
+  
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -86,7 +96,7 @@
 <p>登陆验证时先验证有效期过了没有，如果设置指纹时间超过90天则报错说</p>
 <p><code>因您长时间未使用指纹登录，请先通过验证密码登录，成功登录后下次登录时可继续使用指纹登录。</code></p>
 <p>反之进行下一步验证，调用客户端方法native:authenticate()，验证时会有传两个值给后台，方案图如下：</p>
-<p><img src="E:\hexo\blog\public\img\zw.png" alt=""></p>
+<p><img src="/img/zw.png" alt="qqq"></p>
 <p>部分代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if val1 == false then</span><br><span class="line">    if val2 == -3 or val2 == -6 or val2 == -10 or val2 == -1004 then  --点击验证密码, -6是该设备没有指纹功能,-10会话不可用，-1004身份验证失败，因为他需要显示已被禁止的UI</span><br><span class="line">    elseif val2 == -2 or val2 == -9 or val2 == -4 then -- -2点击取消,-9按home键取消，-4来电话的情况</span><br><span class="line">    elseif val2 == -7 or val2 == -5 then -- 没有设置指纹   -5关闭了指纹</span><br><span class="line">    elseif val2 == -8 then -- -8被锁了</span><br><span class="line">    elseif val2 == -1 then  -- -1, 错误输入超过三次</span><br><span class="line">    elseif val2 == 100 then  --您设备的TouchID发生了变化，请使用密码登录。</span><br><span class="line">    end</span><br><span class="line">elseif val1 == true then  --验证指纹成功</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>具体方法就不贴出来了，不同的app可能走的方法也不同，只是把大概的流程判断给贴出来。</p>
@@ -145,7 +155,7 @@
       <ul>
         
           <li>
-            <a href="/2018/04/01/关于ios指纹登陆功能/">(no title)</a>
+            <a href="/2018/04/01/关于ios指纹登陆功能/">关于ios指纹登陆功能</a>
           </li>
         
           <li>
