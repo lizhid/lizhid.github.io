@@ -7,17 +7,17 @@
   
   <title>关于ios指纹登陆功能 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于ios指纹登陆功能设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,">
+  <meta name="description" content="设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,eCode =nati">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于ios指纹登陆功能">
 <meta property="og:url" content="http://yoursite.com/2018/04/01/关于ios指纹登陆功能/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于ios指纹登陆功能设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,">
+<meta property="og:description" content="设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,eCode =nati">
 <meta property="og:image" content="http://yoursite.com/img/zw.png">
-<meta property="og:updated_time" content="2018-04-02T06:11:14.716Z">
+<meta property="og:updated_time" content="2018-04-02T06:14:17.463Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于ios指纹登陆功能">
-<meta name="twitter:description" content="关于ios指纹登陆功能设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,">
+<meta name="twitter:description" content="设置指纹：要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。  123456bol,eCode =nati">
 <meta name="twitter:image" content="http://yoursite.com/img/zw.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -87,7 +87,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="关于ios指纹登陆功能"><a href="#关于ios指纹登陆功能" class="headerlink" title="关于ios指纹登陆功能"></a>关于ios指纹登陆功能</h2><h3 id="设置指纹："><a href="#设置指纹：" class="headerlink" title="设置指纹："></a>设置指纹：</h3><p>要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。</p>
+        <h3 id="设置指纹："><a href="#设置指纹：" class="headerlink" title="设置指纹："></a>设置指纹：</h3><p>要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。</p>
  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bol,eCode =native:canAuthenticate();</span><br><span class="line"><span class="keyword">if</span> bol == <span class="literal">false</span> and eCode == <span class="number">-7</span>  then</span><br><span class="line">    alert(<span class="string">"您尚未设置Touch ID，请先在手机系统“设置-Touch ID与密码”中添加指纹。"</span>);</span><br><span class="line">elseif bol == <span class="literal">true</span> then  --access_token开通指纹时生成</span><br><span class="line">    --可以做开通指纹的方法</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>为了更严谨点，当把access_token保存在客户端本地时，顺便也把access_token保持在数据库中，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--请求接口开通指纹，接口会返回access_token，yxts（有效天数），rzlx（认证类型）</span><br><span class="line">access_token=access_token[&quot;value&quot;];</span><br><span class="line">yxts=yxts[&quot;value&quot;];</span><br><span class="line">if database:getData(userid) == &quot;&quot; or database:getData(userid) == nil then</span><br><span class="line">	zhiwen_password=yxts..&quot;|&quot;..FRM_time..&quot;|&quot;..rzlx;</span><br><span class="line">else                 					  	          			   zhiwen_password=database:getData(userid)..&quot;rytong&quot;..yxts..&quot;|&quot;..FRM_time..&quot;|&quot;..rzlx;</span><br><span class="line">end</span><br><span class="line">native:storeKeyAndSecret(&quot;access_token_key&quot;, access_token, 	&quot;access_token_serviceData&quot;);--ios把access_token用 storeKeyAndSecret保存</span><br><span class="line">database:addData(&quot;access_token_key&quot;, access_token);  --安卓保存在数据库中，现在ios也一起保存数据库中，</span><br><span class="line">database:addData(userid, zhiwen_password);</span><br></pre></td></tr></table></figure>
