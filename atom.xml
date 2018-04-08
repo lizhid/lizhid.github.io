@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-02T06:14:17.463Z</updated>
+  <updated>2018-04-08T06:08:03.541Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://yoursite.com/2018/04/01/%E5%85%B3%E4%BA%8Eios%E6%8C%87%E7%BA%B9%E7%99%BB%E9%99%86%E5%8A%9F%E8%83%BD/"/>
     <id>http://yoursite.com/2018/04/01/关于ios指纹登陆功能/</id>
     <published>2018-04-01T06:13:52.000Z</published>
-    <updated>2018-04-02T06:14:17.463Z</updated>
+    <updated>2018-04-08T06:08:03.541Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;设置指纹：&quot;&gt;&lt;a href=&quot;#设置指纹：&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h3 id=&quot;设置指纹：&quot;&gt;&lt;a href=&quot;#设置指纹：&quot; class=&quot;headerlink&quot; title=&quot;设置指纹：&quot;&gt;&lt;/a&gt;设置指纹：&lt;/h3&gt;&lt;p&gt;要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。&lt;br&gt;
     
     </summary>
     
@@ -57,69 +51,15 @@
   </entry>
   
   <entry>
-    <title>My-second-two</title>
-    <link href="http://yoursite.com/2018/03/26/My-secondtwo/"/>
-    <id>http://yoursite.com/2018/03/26/My-secondtwo/</id>
-    <published>2018-03-26T08:01:52.000Z</published>
-    <updated>2018-03-26T08:08:13.414Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;#第一次开通博客&lt;/p&gt;
-&lt;p&gt;-&lt;strong&gt;学习学习1吧&lt;/strong&gt;&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>My-second</title>
-    <link href="http://yoursite.com/2018/03/23/My-second/"/>
-    <id>http://yoursite.com/2018/03/23/My-second/</id>
-    <published>2018-03-23T08:01:52.000Z</published>
-    <updated>2018-03-23T08:05:54.955Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;#第一次开通博客&lt;/p&gt;
-&lt;p&gt;-&lt;strong&gt;随便写点东西实验一下&lt;/strong&gt;&lt;/p&gt;
-
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>My first</title>
     <link href="http://yoursite.com/2018/03/23/My-first/"/>
     <id>http://yoursite.com/2018/03/23/My-first/</id>
     <published>2018-03-23T07:15:52.000Z</published>
-    <updated>2018-03-23T07:24:12.658Z</updated>
+    <updated>2018-04-08T06:08:50.957Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;欢迎使用Markdown编辑器写博客&quot;&gt;&lt;a href=&quot;#欢迎使用Markdown编辑器写博客&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;欢迎使用Markdown编辑器写博客&quot;&gt;&lt;a href=&quot;#欢迎使用Markdown编辑器写博客&quot; class=&quot;headerlink&quot; title=&quot;欢迎使用Markdown编辑器写博客&quot;&gt;&lt;/a&gt;欢迎使用Markdown编辑器写博客&lt;/h1&gt;&lt;p&gt;本Markdown编辑器使用&lt;a href=&quot;https://github.com/benweet/stackedit&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;StackEdit&lt;/a&gt;修改而来，用它写博客，将会带来全新的体验哦：&lt;br&gt;
     
     </summary>
     

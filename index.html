@@ -134,22 +134,10 @@
     </header>
     <main class="post-body" itemprop="articleBody">
       
-      <h3 id="设置指纹："><a href="#设置指纹：" class="headerlink" title="设置指纹："></a>设置指纹：</h3><p>要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">bol,eCode =native:canAuthenticate();</span><br><span class="line"><span class="keyword">if</span> bol == <span class="literal">false</span> and eCode == <span class="number">-7</span>  then</span><br><span class="line">    alert(<span class="string">"您尚未设置Touch ID，请先在手机系统“设置-Touch ID与密码”中添加指纹。"</span>);</span><br><span class="line">elseif bol == <span class="literal">true</span> then  --access_token开通指纹时生成</span><br><span class="line">    --可以做开通指纹的方法</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>为了更严谨点，当把access_token保存在客户端本地时，顺便也把access_token保持在数据库中，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">--请求接口开通指纹，接口会返回access_token，yxts（有效天数），rzlx（认证类型）</span><br><span class="line">access_token=access_token[&quot;value&quot;];</span><br><span class="line">yxts=yxts[&quot;value&quot;];</span><br><span class="line">if database:getData(userid) == &quot;&quot; or database:getData(userid) == nil then</span><br><span class="line">	zhiwen_password=yxts..&quot;|&quot;..FRM_time..&quot;|&quot;..rzlx;</span><br><span class="line">else                 					  	          			   zhiwen_password=database:getData(userid)..&quot;rytong&quot;..yxts..&quot;|&quot;..FRM_time..&quot;|&quot;..rzlx;</span><br><span class="line">end</span><br><span class="line">native:storeKeyAndSecret(&quot;access_token_key&quot;, access_token, 	&quot;access_token_serviceData&quot;);--ios把access_token用 storeKeyAndSecret保存</span><br><span class="line">database:addData(&quot;access_token_key&quot;, access_token);  --安卓保存在数据库中，现在ios也一起保存数据库中，</span><br><span class="line">database:addData(userid, zhiwen_password);</span><br></pre></td></tr></table></figure>
-<p>还要把指纹有效期（90天）、设置开通指纹时的时间、登陆认证类型（主要是区分指纹还是手势）拼接成一个字段进行保存（zhiwen_password），</p>
-<h2 id="登陆验证指纹："><a href="#登陆验证指纹：" class="headerlink" title="登陆验证指纹："></a>登陆验证指纹：</h2><p>设置完用指纹登陆后，这个时候回到登陆界面就可以用指纹进行登录了</p>
-<p>登陆验证时先验证有效期过了没有，如果设置指纹时间超过90天则报错说</p>
-<p><code>因您长时间未使用指纹登录，请先通过验证密码登录，成功登录后下次登录时可继续使用指纹登录。</code></p>
-<p>反之进行下一步验证，调用客户端方法native:authenticate()，验证时会有传两个值给后台，方案图如下：</p>
-<p><img src="/img/zw.png" alt="qqq"></p>
-<p>部分代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if val1 == false then</span><br><span class="line">    if val2 == -3 or val2 == -6 or val2 == -10 or val2 == -1004 then  --点击验证密码, -6是该设备没有指纹功能,-10会话不可用，-1004身份验证失败，因为他需要显示已被禁止的UI</span><br><span class="line">    elseif val2 == -2 or val2 == -9 or val2 == -4 then -- -2点击取消,-9按home键取消，-4来电话的情况</span><br><span class="line">    elseif val2 == -7 or val2 == -5 then -- 没有设置指纹   -5关闭了指纹</span><br><span class="line">    elseif val2 == -8 then -- -8被锁了</span><br><span class="line">    elseif val2 == -1 then  -- -1, 错误输入超过三次</span><br><span class="line">    elseif val2 == 100 then  --您设备的TouchID发生了变化，请使用密码登录。</span><br><span class="line">    end</span><br><span class="line">elseif val1 == true then  --验证指纹成功</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>具体方法就不贴出来了，不同的app可能走的方法也不同，只是把大概的流程判断给贴出来。</p>
-<p>验证成功的那一步还需要做个判断，因为有可能之前保存在客户端的access_token因为某些原因丢失，所以要判断access_token是否为空，如果为空就取设置时保存在数据库中的access_token，如果能取到值，那就把这个值送给接口，登陆成功后把这个值再次保存在客户端本地。如果从数据库还依然取不到access_token，那就只能提示用户使用密码登陆了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">local access_token=native:getSecretByKey(&quot;access_token_key&quot;, &quot;access_token_serviceData&quot;);  --取出保存在客户端的access_token</span><br><span class="line">if access_token == &quot;&quot; or access_token == nil then</span><br><span class="line">	local access_token = database:getData(&quot;access_token_key&quot;);    --从客户端取不到的话就从数据库取</span><br><span class="line">	if access_token == &quot;&quot; or access_token == nil then</span><br><span class="line">        local  userid=gzjzl..gzjhm;              --数据库还取不到的话就提示用户用密码登录</span><br><span class="line">        database:addData(userid, &quot;&quot;);</span><br><span class="line">		cmm_unit_fun.public:alert(&quot;指纹密钥已丢失,请使用密码登录&quot;,&quot;确定&quot;,</span><br><span class="line">        function(index)</span><br><span class="line">        changelogin();</span><br><span class="line">        location:reload();</span><br><span class="line">        end);</span><br><span class="line">	else</span><br><span class="line">        native:storeKeyAndSecret(&quot;access_token_key&quot;, access_token, &quot;access_token_serviceData&quot;);--ios把access_token用 storeKeyAndSecret保存</span><br><span class="line">       --这里写把值传给接口的方法 </span><br><span class="line">     end</span><br><span class="line">else</span><br><span class="line">   --这里写把值传给接口的方法</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
+      <h3 id="设置指纹："><a href="#设置指纹：" class="headerlink" title="设置指纹："></a>设置指纹：</h3><p>要使用指纹登陆必须得先开通指纹登陆功能，所以我们需要先设置指纹开通，调用bol,ecode=native：canAuthenticate（）方法检测系统是否有设置指纹密码，该方法会返回两个值，当bol=false，ecode=-7时会提示用户尚未设置Touch iD，需要先在手机上设置touch id。bol=true时表示可以开通指纹功能。<br>
+      <div class="post-button">
+        <a class="readmore button" href="/2018/04/01/关于ios指纹登陆功能/#more">Read More <i class="fas fa-angle-double-right"></i></a>
+      </div>
       
     </main>
     <footer class="post-footer">
@@ -200,82 +188,6 @@
   
   <article class="index-post card" itemscope itemtype="http://schema.org/Article">
     <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/26/My-secondtwo/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="John Doe">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Hexo">
-      </span>
-    </div>
-    <header class="post-header">
-      <h2 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/03/26/My-secondtwo/" itemprop="url">My-second-two</a>
-      </h2>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i> <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-03-26T16:01:52+08:00">2018-03-26</time>
-        </span>
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-body" itemprop="articleBody">
-      
-      <p>#第一次开通博客</p>
-<p>-<strong>学习学习1吧</strong></p>
-
-      
-    </main>
-    <footer class="post-footer">
-      
-    </footer>
-  </article>
-  
-  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/23/My-second/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <meta itemprop="name" content="John Doe">
-        <meta itemprop="description" content="">
-        <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-        <meta itemprop="name" content="Hexo">
-      </span>
-    </div>
-    <header class="post-header">
-      <h2 class="post-title" itemprop="name headline">
-        <a class="post-title-link post-title-link-external" href="/2018/03/23/My-second/" itemprop="url">My-second</a>
-      </h2>
-      <div class="post-meta">
-        
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i> <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-03-23T16:01:52+08:00">2018-03-23</time>
-        </span>
-        
-        
-        
-      </div>
-    </header>
-    <main class="post-body" itemprop="articleBody">
-      
-      <p>#第一次开通博客</p>
-<p>-<strong>随便写点东西实验一下</strong></p>
-
-      
-    </main>
-    <footer class="post-footer">
-      
-    </footer>
-  </article>
-  
-  <article class="index-post card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
       <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/23/My-first/">
       <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
         <meta itemprop="name" content="John Doe">
@@ -302,131 +214,10 @@
     </header>
     <main class="post-body" itemprop="articleBody">
       
-      <h1 id="欢迎使用Markdown编辑器写博客"><a href="#欢迎使用Markdown编辑器写博客" class="headerlink" title="欢迎使用Markdown编辑器写博客"></a>欢迎使用Markdown编辑器写博客</h1><p>本Markdown编辑器使用<a href="https://github.com/benweet/stackedit" target="_blank" rel="noopener">StackEdit</a>修改而来，用它写博客，将会带来全新的体验哦：</p>
-<ul>
-<li><strong>Markdown和扩展Markdown简洁的语法</strong></li>
-<li><strong>代码块高亮</strong></li>
-<li><strong>图片链接和图片上传</strong></li>
-<li><strong><em>LaTex</em>数学公式</strong></li>
-<li><strong>UML序列图和流程图</strong></li>
-<li><strong>离线写博客</strong></li>
-<li><strong>导入导出Markdown文件</strong></li>
-<li><strong>丰富的快捷键</strong></li>
-</ul>
-<hr>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li>加粗    <code>Ctrl + B</code> </li>
-<li>斜体    <code>Ctrl + I</code> </li>
-<li>引用    <code>Ctrl + Q</code></li>
-<li>插入链接    <code>Ctrl + L</code></li>
-<li>插入代码    <code>Ctrl + K</code></li>
-<li>插入图片    <code>Ctrl + G</code></li>
-<li>提升标题    <code>Ctrl + H</code></li>
-<li>有序列表    <code>Ctrl + O</code></li>
-<li>无序列表    <code>Ctrl + U</code></li>
-<li>横线    <code>Ctrl + R</code></li>
-<li>撤销    <code>Ctrl + Z</code></li>
-<li>重做    <code>Ctrl + Y</code></li>
-</ul>
-<h2 id="Markdown及扩展"><a href="#Markdown及扩展" class="headerlink" title="Markdown及扩展"></a>Markdown及扩展</h2><blockquote>
-<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成格式丰富的HTML页面。    —— <a href="https://zh.wikipedia.org/wiki/Markdown" target="_blank"> [ 维基百科 ]</a></p>
-</blockquote>
-<p>使用简单的符号标识不同的标题，将某些文字标记为<strong>粗体</strong>或者<em>斜体</em>，创建一个<a href="http://www.csdn.net" target="_blank" rel="noopener">链接</a>等，详细语法参考帮助？。</p>
-<p>本编辑器支持 <strong>Markdown Extra</strong> , 　扩展了很多好用的功能。具体请参考<a href="https://github.com/jmcmanus/pagedown-extra" title="Pagedown Extra" target="_blank" rel="noopener">Github</a>.  </p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p><strong>Markdown　Extra</strong>　表格语法：</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>价格</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Computer</td>
-<td>$1600</td>
-</tr>
-<tr>
-<td>Phone</td>
-<td>$12</td>
-</tr>
-<tr>
-<td>Pipe</td>
-<td>$1</td>
-</tr>
-</tbody>
-</table>
-<p>可以使用冒号来定义对齐方式：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">项目</th>
-<th style="text-align:right">价格</th>
-<th style="text-align:center">数量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Computer</td>
-<td style="text-align:right">1600 元</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:left">Phone</td>
-<td style="text-align:right">12 元</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td style="text-align:left">Pipe</td>
-<td style="text-align:right">1 元</td>
-<td style="text-align:center">234</td>
-</tr>
-</tbody>
-</table>
-<p>###定义列表</p>
-<p><strong>Markdown　Extra</strong>　定义列表语法：<br>项目１<br>项目２<br>:   定义 A<br>:   定义 B</p>
-<p>项目３<br>:   定义 C</p>
-<p>:   定义 D</p>
-<pre><code>&gt; 定义D内容
-</code></pre><h3 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h3><p>代码块语法遵循标准markdown代码，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@requires_authorization</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">somefunc</span><span class="params">(param1=<span class="string">''</span>, param2=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="string">'''A docstring'''</span></span><br><span class="line">    <span class="keyword">if</span> param1 &gt; param2: <span class="comment"># interesting</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">'Greater'</span></span><br><span class="line">    <span class="keyword">return</span> (param2 - param1 + <span class="number">1</span>) <span class="keyword">or</span> <span class="keyword">None</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>message = <span class="string">'''interpreter</span></span><br><span class="line"><span class="string"><span class="meta">... </span>prompt'''</span></span><br></pre></td></tr></table></figure></p>
-<p>###脚注<br>生成一个脚注[^footnote].<br>  [^footnote]: 这里是 <strong>脚注</strong> 的 <em>内容</em>.</p>
-<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>用 <code>[TOC]</code>来生成目录：</p>
-<p>[TOC]</p>
-<h3 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h3><p>使用MathJax渲染<em>LaTex</em> 数学公式，详见<a href="http://math.stackexchange.com/" target="_blank" rel="noopener">math.stackexchange.com</a>.</p>
-<ul>
-<li>行内公式，数学公式为：$\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$。</li>
-<li>块级公式：</li>
-</ul>
-<p>$$    x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$</p>
-<p>更多LaTex语法请参考 <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference" target="_blank" rel="noopener">这儿</a>.</p>
-<h3 id="UML-图"><a href="#UML-图" class="headerlink" title="UML 图:"></a>UML 图:</h3><p>可以渲染序列图：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">张三-&gt;李四: 嘿，小四儿, 写博客了没?</span><br><span class="line">Note right of 李四: 李四愣了一下，说：</span><br><span class="line">李四--&gt;张三: 忙得吐血，哪有时间写。</span><br></pre></td></tr></table></figure>
-<p>或者流程图：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始</span><br><span class="line">e=&gt;end: 结束</span><br><span class="line">op=&gt;operation: 我的操作</span><br><span class="line">cond=&gt;condition: 确认？</span><br><span class="line"></span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
-<ul>
-<li>关于 <strong>序列图</strong> 语法，参考 <a href="http://bramp.github.io/js-sequence-diagrams/" target="_blank" rel="noopener">这儿</a>,</li>
-<li>关于 <strong>流程图</strong> 语法，参考 <a href="http://adrai.github.io/flowchart.js/" target="_blank" rel="noopener">这儿</a>.</li>
-</ul>
-<h2 id="离线写博客"><a href="#离线写博客" class="headerlink" title="离线写博客"></a>离线写博客</h2><p>即使用户在没有网络的情况下，也可以通过本编辑器离线写博客（直接在曾经使用过的浏览器中输入<a href="http://write.blog.csdn.net/mdeditor" target="_blank" rel="noopener">write.blog.csdn.net/mdeditor</a>即可。<strong>Markdown编辑器</strong>使用浏览器离线存储将内容保存在本地。</p>
-<p>用户写博客的过程中，内容实时保存在浏览器缓存中，在用户关闭浏览器或者其它异常情况下，内容不会丢失。用户再次打开浏览器时，会显示上次用户正在编辑的没有发表的内容。</p>
-<p>博客发表后，本地缓存将被删除。　</p>
-<p>用户可以选择 <i class="icon-disk"></i> 把正在写的博客保存到服务器草稿箱，即使换浏览器或者清除缓存，内容也不会丢失。</p>
-<blockquote>
-<p><strong>注意：</strong>虽然浏览器存储大部分时候都比较可靠，但为了您的数据安全，在联网后，<strong>请务必及时发表或者保存到服务器草稿箱</strong>。</p>
-</blockquote>
-<p>##浏览器兼容</p>
-<ol>
-<li>目前，本编辑器对Chrome浏览器支持最为完整。建议大家使用较新版本的Chrome。</li>
-<li>IE９以下不支持</li>
-<li>IE９，１０，１１存在以下问题<ol>
-<li>不支持离线功能</li>
-<li>IE9不支持文件导入导出</li>
-<li>IE10不支持拖拽文件导入</li>
-</ol>
-</li>
-</ol>
-<hr>
-
+      <h1 id="欢迎使用Markdown编辑器写博客"><a href="#欢迎使用Markdown编辑器写博客" class="headerlink" title="欢迎使用Markdown编辑器写博客"></a>欢迎使用Markdown编辑器写博客</h1><p>本Markdown编辑器使用<a href="https://github.com/benweet/stackedit" target="_blank" rel="noopener">StackEdit</a>修改而来，用它写博客，将会带来全新的体验哦：<br>
+      <div class="post-button">
+        <a class="readmore button" href="/2018/03/23/My-first/#more">Read More <i class="fas fa-angle-double-right"></i></a>
+      </div>
       
     </main>
     <footer class="post-footer">
