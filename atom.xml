@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-19T08:36:08.937Z</updated>
+  <updated>2018-04-19T09:17:10.415Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Lua string</title>
+    <title>Lua strings</title>
     <link href="http://yoursite.com/2018/04/19/Lua-string/"/>
     <id>http://yoursite.com/2018/04/19/Lua-string/</id>
     <published>2018-04-19T08:27:00.000Z</published>
-    <updated>2018-04-19T08:36:08.937Z</updated>
+    <updated>2018-04-19T09:17:10.415Z</updated>
     
     <summary type="html">
     
