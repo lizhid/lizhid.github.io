@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-19T08:29:19.795Z</updated>
+  <updated>2018-04-19T08:36:08.937Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="http://yoursite.com/2018/04/19/Lua-string/"/>
     <id>http://yoursite.com/2018/04/19/Lua-string/</id>
     <published>2018-04-19T08:27:00.000Z</published>
-    <updated>2018-04-19T08:29:19.795Z</updated>
+    <updated>2018-04-19T08:36:08.937Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Lua-字符串&quot;&gt;&lt;a href=&quot;#Lua-字符串&quot; class=&quot;headerlink&quot; title=&quot;Lua 字符串&quot;&gt;&lt;/a&gt;Lua 字符串&lt;/h1&gt;&lt;p&gt;字符串或串(String)是由数字、字母、下划线组成的一串字符。&lt;br&gt;
+      &lt;p&gt;字符串或串(String)是由数字、字母、下划线组成的一串字符。&lt;br&gt;
     
     </summary>
     
