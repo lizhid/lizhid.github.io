@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#26272b">
+    
+    
+    
+    <meta name="keywords" content="Life, ARIA, Hexo">
+    
+    
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
+    
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    
+    
+    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#26272b">
+    
+    
+    <link rel="manifest" href="/favicons/manifest.json">
+    
+    
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
+    
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script defer type="text/javascript" src="/js/util.js"></script>
+    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
+    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
+    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
+    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
+    
+    <script defer src="/js/busuanzi.pure.mini.js"></script>
+    
+    
+    <script defer type="text/javascript" src="/js/search.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      var searchPath = "search.xml";
+      if (searchPath.length == 0) {
+  	    searchPath = "search.xml";
+      }
+      var path = "/" + searchPath;
+      searchFunc(path, "search-input", "search-result");
+    });
+    </script>
+    
+    
+    <script defer type="text/javascript" src="/js/index.js"></script>
+    <script defer type="text/javascript" src="/js/custom.js"></script>
+    <title>React 简单介绍 | Hexo</title>
+  </head>
+  <body itemscope itemtype="http://schema.org/WebPage" lang=""  data-spy="scroll" data-target=".list-group">
+    
+<header id="header" class="header">
+  <div class="container">
+    <div class="header-container">
+      <div class="header-title">
+        <h1 class="title"><a href="/">Hexo</a></h1>
+        <h2 class="subtitle"></h2>
+      </div>
+      <div class="logo">
+        <img src="/images/ARIA_logo.png" alt="logo">
+      </div>
+    </div>
+    
+<nav id="nav" class="nav">
+  <a id="nav-toggle" class="nav-toggle"><i class="fas fa-bars"></i></a>
+  <ul id="menu">
+    
+    <li><a href="/">首页</a></li>
+    
+    <li><a href="/archives/">归档</a></li>
+    
+    <li><a href="/about/">关于</a></li>
+    
+  </ul>
+</nav>
+
+
+  </div>
+</header>
+
+
+    <main id="main" class="main">
+      <div class="container">
+        <div class="main-container">
+          <div class="content">
+            
+<section id="post" class="post">
+  
+  <article class="post-container card" itemscope itemtype="http://schema.org/Article">
+    <div class="post-block">
+      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/React/">
+      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+       <meta itemprop="name" content="li.zhidan">
+       <meta itemprop="description" content="">
+       <meta itemprop="image" content="/images/avatar.png">
+      </span>
+      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+       <meta itemprop="name" content="Hexo">
+      </span>
+    </div>
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+       <span class="">React 简单介绍</span>
+      </h1>
+      <div class="post-meta">
+        
+        <span class="post-date">
+          <i class="far fa-calendar-plus"></i> <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-04-09T11:30:00+08:00">2018-04-09</time>
+        </span>
+        
+        
+        <span class="post-meta-divider"> | </span>
+        <span class="post-categories">
+          <i class="far fa-folder-open"></i>
+          
+          
+          <span itemprop="about" itemscope itemtype="http://schema.org/Thing"> <a href="/categories/李志丹/" itemprop="url" rel="index"><span itemprop="name">李志丹</span></a></span>
+          
+          
+        </span>
+        
+        
+      </div>
+    </header>
+    <main class="post-body" itemprop="articleBody">
+      <p>React 是较早使用 JavaScript 构建大型、快速的 Web 应用程序的技术方案。它已经被广泛应用于 Facebook 和 Instagram。<br><a id="more"></a></p>
+<h2 id="React介绍"><a href="#React介绍" class="headerlink" title="React介绍"></a>React介绍</h2><p>React 是为了解决一个问题：构建随着时间数据不断变化的大规模应用程序。</p>
+<p>React 采用下面两个主要的思想：</p>
+<ul>
+<li>简单：表达出应用程序在任一个时间点应该长的样子，然后当底层的数据变了，React 会自动处理所有用户界面的更新。</li>
+<li>声明式：当数据变化了，React 概念上是类似点击了更新的按钮，但仅会更新变化的部分。</li>
+</ul>
+<p>React 都是关于构建<code>可复用的组件</code>。通过 React 唯一要做的事情就是构建组件。得益于其良好的封装性，组件使代码复用。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>目前Web应用的开发流程中，前端代码的开发和维护的工作量日益增大。与此同时，开源社区中也涌现出了很多的前端开发框架用于提升前端代码开发和维护的效率。按照类型分为：</p>
+<ul>
+<li>UI框架。如Bootstrap、MUI等</li>
+<li>Library类型框架。如JQuery等</li>
+<li>架构类框架。如AngularJS、Backbone、React</li>
+</ul>
+<p>使用统一的开发框架、开发规范无疑可以给MUIP上应用开发的效率和维护成本带来好处。结合移动应用的开发特点，框架需要满足以下的要求：</p>
+<ul>
+<li>提供公共组件的封装机制，较容易实现组件及代码复用；</li>
+<li>满足移动设备上的运行效率要求，较容易实现好的用户体验；</li>
+<li>开放标准及开发源码，有良好的可扩展性和可集成性；</li>
+<li>社区活跃，有大量的开发人群；</li>
+</ul>
+<p>综合以上考虑，我们拟选择React框架来为作为应用开发的默认框架，并基于它定义应用上的公共组件。</p>
+<h2 id="Webpack介绍"><a href="#Webpack介绍" class="headerlink" title="Webpack介绍"></a>Webpack介绍</h2><p>Webpack 是一个模块打包工具，可以使用Webpack管理模块依赖，并编绎输出模块所需的静态文件。</p>
+<p>Webpack优点：</p>
+<ul>
+<li>模块来源广泛，支持包括npm/bower等等的各种主流模块安装／依赖解决方案。</li>
+<li>模块规范支持全面，amd/commonjs以及shimming等一应具全。</li>
+<li>浏览器端足迹小，移动端友好，却对热加载乃至热替换有很好的支持。</li>
+<li>插件机制完善，实现本身实现同样模块化，容易扩展。</li>
+</ul>
+<p>支持的两种模块加载模式：</p>
+<ul>
+<li>同步加载模式： CommonJS (Node.JS)的模式</li>
+<li>异步加载模式：即 AMD 模式，与require.js相同</li>
+</ul>
+<h2 id="为何使用Webpack"><a href="#为何使用Webpack" class="headerlink" title="为何使用Webpack"></a>为何使用Webpack</h2><p>长久以来，Web开发者都是把所需Javascript、CSS文件一并放进HTML里面，对于庞大的项目来说管理起来非常麻烦。</p>
+<p>Webpack就是一款专为Web开发设计的包管理器。它能够很好地管理、打包Web开发中所用到的Javascript、CSS以及各种静态文件（图片、字体等），等资源文件会被编译整合到一个静态文件中，对于开发人员只需简单引用这一个静态文件即可，让开发过程更加高效。</p>
+<p>对于应用组件开发，将遵循CommonJS的开发规范，对组件进行开发，使用Webpack对所有的组件进行打包，从而避免开发人员每个组件单独的引入，对开发人员还可忽略复合组件间的依赖关系，无论对后期开发还是维护，对开发效率的提升上，都起到了关键的作用</p>
+<h1 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h1><h2 id="Node-js介绍"><a href="#Node-js介绍" class="headerlink" title="Node.js介绍"></a>Node.js介绍</h2><p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 <code>npm</code>，是全球最大的开源库生态系统。</p>
+<p>在基于React的开发中正正使用到了Node.js的包管理工具<code>npm</code>，对资源包进行有效地管理。</p>
+<h2 id="Node-js安装"><a href="#Node-js安装" class="headerlink" title="Node.js安装"></a>Node.js安装</h2><p><strong>第一步：下载安装文件</strong></p>
+<p>下载nodejs，官网：<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">http://nodejs.cn/download/</a>，下载node-v5.3.0-x64.msi(Mac系统下载node-v5.3.0.pkg)，如下图：<br><img src="/img/node_download.png" alt="![img](/img/node_download.png)"></p>
+<p><strong>第二步：Node.js安装</strong></p>
+<p>下载完成之后，双击”node-v5.3.0-x64.msi”，开始安装nodejs，默认安装在<code>C:\Program Files\nodejs\</code>下。</p>
+<p>在cmd控制台输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<p>控制台将打印出：<code>v8.9.3</code>，出现版本提示表示安装成功。</p>
+<p>新版的Nodejs已经集成了<code>npm</code>，所以之前npm也一并安装好了。同样可以使用cmd命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p>控制台将打印出：<code>5.8.0</code>，出现版本提示表示安装成功。</p>
+<h2 id="什么是Webpack"><a href="#什么是Webpack" class="headerlink" title="什么是Webpack"></a>什么是Webpack</h2><p><img src="/img/what-is-webpack.png" alt="![img](/img/what-is-webpack.png)"></p>
+<p>事实上它是一个打包工具，而不是像RequireJS或SeaJS这样的模块加载器，通过使用Webpack，能够像Node.js一样处理依赖关系，然后解析出模块之间的依赖，将代码打包。</p>
+<p>Webpack可把各种资源，例如JS、JSX、coffee、样式（含less/sass）、图片等都作为模块来使用和处理。可以直接使用 require(xxx) 的形式来引入各模块，即使它们可能需要经过编译（比如JSX和sass），但无须在上面花费太多心思，因为 webpack 有着各种健全的加载器（loader）在默默处理这些事情。</p>
+<h2 id="Webpack安装"><a href="#Webpack安装" class="headerlink" title="Webpack安装"></a>Webpack安装</h2><p>全局安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g webpack</span><br></pre></td></tr></table></figure>
+
+    </main>
+    <footer class="post-footer">
+      
+      
+      <div class="post-tags">
+        
+        
+        
+        
+        
+        
+        <a class="post-tag button" href="/tags/react/" style="background: #fc6423" rel="tag"><i class="fas fa-tags"></i> react</a>
+        
+        
+      </div>
+      
+    </footer>
+  </article>
+  
+  
+<div class="reward" id="reward">
+  <p>坚持原创技术分享，您的鼓励将是我继续前进的动力！</p>
+  <button id="reward-button" disable="enable">
+    <span>打赏</span>
+  </button>
+  <div id="qr" class="qr" style="display: none;">
+    
+    <div id="wechat">
+      <img id="wechat_qr" src="/images/WeChatPay.png" alt="微信支付"/>
+      <span>微信支付</span>
+    </div>
+    
+    
+    <div id="alipay">
+      <img id="alipay_qr" src="/images/AliPay.png" alt="支付宝"/>
+      <span>支付宝</span>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+  
+  
+  <div class="post-nav">
+    
+    <div class="post-nav-next post-nav-item">
+      <a href="/2018/04/01/关于ios指纹登陆功能/" rel="next" title="关于ios指纹登陆功能"><i class="fas fa-angle-left"></i> 关于ios指纹登陆功能</a>
+    </div>
+    
+    <span class="post-nav-divider"></span>
+    
+    <div class="post-nav-prev post-nav-item">
+      <a href="/2018/04/19/Lua-string/" rel="prev" title="Lua string">Lua string <i class="fas fa-angle-right"></i></a>
+    </div>
+    
+  </div>
+  
+  
+</section>
+
+          </div>
+          
+          
+          
+<aside class="sidebar" id="sidebar">
+  
+  <div class="search">
+    <div class="form-group">
+      <i class="fas fa-search"></i> <input type="text" id="search-input" name="q" results="0" placeholder="搜索" class="form-control"/>
+    </div>
+  </div>
+  <div class="search-result-box" id="search-result"></div>
+  
+  
+<div class="author sidebar-item" id="author">
+  
+  <img class="author-avatar" src="/images/avatar.png" alt="li.zhidan">
+  
+  <p class="author-name">li.zhidan</p>
+  <p class="author-description"> </p>
+</div>
+
+
+  
+  <a class="rss button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i> RSS</a>
+  
+  
+  <hr>
+  
+<div class="social-links sidebar-item">
+  <p><i class="far fa-address-card"></i> 社交链接</p>
+  <ul>
+    
+    <li><i class="fab fa-github"></i> <a href="https://github.com/" target="_blank">GitHub</a></li>
+    
+    <li><i class="fab fa-weibo"></i> <a href="https://weibo.com/" target="_blank">Weibo</a></li>
+    
+  </ul>
+</div>
+
+
+  
+  <hr>
+  
+
+<div class="blogroll sidebar-item">
+  <p><i class="fas fa-link"></i> 友情链接</p>
+  <ul>
+    
+    <li><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
+    
+    <li><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
+    
+    <li><a href="http://stylus-lang.com/" target="_blank">Stylus</a></li>
+    
+  </ul>
+</div>
+
+
+
+  
+  
+  <hr>
+  
+
+
+<div class="post-toc sidebar-item" id="post-toc">
+  <p><i class="fas fa-list-ol"></i> 文章目录</p>
+  <div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#React介绍"><span class="toc-text">React介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack介绍"><span class="toc-text">Webpack介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为何使用Webpack"><span class="toc-text">为何使用Webpack</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境安装"><span class="toc-text">环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js介绍"><span class="toc-text">Node.js介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js安装"><span class="toc-text">Node.js安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Webpack"><span class="toc-text">什么是Webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack安装"><span class="toc-text">Webpack安装</span></a></li></ol></div>
+</div>
+
+
+
+  
+</aside>
+
+
+          
+        </div>
+      </div>
+    </main>
+    
+<footer id="footer" class="footer">
+  <div class="container">
+    <div class="back-to-top">
+      <a id="back-to-top"><i class="fas fa-angle-double-up"></i></a>
+    </div>
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="copyright">
+          <span class="author">li.zhidan</span> <i class="far fa-copyright"></i> <span class="year">2018</span>
+        </div>
+        
+        
+<div class="busuanzi">
+  <span id="busuanzi_container_site_pv"><i class="fas fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+  <span id="busuanzi_container_site_uv"><i class="fas fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+  <span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i> <span id="busuanzi_value_page_pv"></span></span>
+</div>
+
+
+        
+      </div>
+      <div class="footer-right">
+        <div class="custom-info">
+          
+          托管于 <i class="fab fa-github-alt"></i> <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+          
+        </div>
+        <div class="powered-by">
+          由 <a href="https://hexo.io/" target="_blank">Hexo</a> 强力驱动 | 主题 <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>

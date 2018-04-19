@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-04-09T03:26:32.972Z</updated>
+  <updated>2018-04-19T08:29:19.795Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,38 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>React 简单介绍</title>
-    <link href="http://yoursite.com/2018/04/09/React%20%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/"/>
-    <id>http://yoursite.com/2018/04/09/React 简单介绍/</id>
-    <published>2018-04-09T03:30:00.000Z</published>
-    <updated>2018-04-09T03:26:32.972Z</updated>
+    <title>Lua string</title>
+    <link href="http://yoursite.com/2018/04/19/Lua-string/"/>
+    <id>http://yoursite.com/2018/04/19/Lua-string/</id>
+    <published>2018-04-19T08:27:00.000Z</published>
+    <updated>2018-04-19T08:29:19.795Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;React-简单介绍&quot;&gt;&lt;a href=&quot;#React-简单介绍&quot; class=&quot;headerlink&quot; title=&quot;React 简单介绍&quot;&gt;&lt;/a&gt;React 简单介绍&lt;/h1&gt;
+      &lt;h1 id=&quot;Lua-字符串&quot;&gt;&lt;a href=&quot;#Lua-字符串&quot; class=&quot;headerlink&quot; title=&quot;Lua 字符串&quot;&gt;&lt;/a&gt;Lua 字符串&lt;/h1&gt;&lt;p&gt;字符串或串(String)是由数字、字母、下划线组成的一串字符。&lt;br&gt;
     
     </summary>
     
-      <category term="lizd" scheme="http://yoursite.com/categories/lizd/"/>
+      <category term="李志丹" scheme="http://yoursite.com/categories/%E6%9D%8E%E5%BF%97%E4%B8%B9/"/>
     
     
-      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
-    
-      <category term="react" scheme="http://yoursite.com/tags/react/"/>
+      <category term="string" scheme="http://yoursite.com/tags/string/"/>
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2018/04/09/zz/"/>
-    <id>http://yoursite.com/2018/04/09/zz/</id>
-    <published>2018-04-09T02:39:34.177Z</published>
-    <updated>2018-04-09T02:39:34.177Z</updated>
+    <title>React 简单介绍</title>
+    <link href="http://yoursite.com/2018/04/09/React/"/>
+    <id>http://yoursite.com/2018/04/09/React/</id>
+    <published>2018-04-09T03:30:00.000Z</published>
+    <updated>2018-04-09T03:39:16.725Z</updated>
     
     <summary type="html">
     
+      &lt;p&gt;React 是较早使用 JavaScript 构建大型、快速的 Web 应用程序的技术方案。它已经被广泛应用于 Facebook 和 Instagram。&lt;br&gt;
+    
     </summary>
     
+      <category term="李志丹" scheme="http://yoursite.com/categories/%E6%9D%8E%E5%BF%97%E4%B8%B9/"/>
+    
+    
+      <category term="react" scheme="http://yoursite.com/tags/react/"/>
     
   </entry>
   
