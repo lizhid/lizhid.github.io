@@ -1,139 +1,109 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#26272b">
-    
-    
-    
-    <meta name="keywords" content="Life, ARIA, Hexo">
-    
-    
-    <meta name="msapplication-config" content="/favicons/browserconfig.xml">
-    
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-    
-    
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-    
-    
-    <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#26272b">
-    
-    
-    <link rel="manifest" href="/favicons/manifest.json">
-    
-    
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml" />
-    
-    <link rel="stylesheet" type="text/css" href="/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/css/atom-one-dark.css">
-    <link rel="stylesheet" type="text/css" href="/css/lightgallery.min.css">
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script defer type="text/javascript" src="/js/util.js"></script>
-    <script defer type="text/javascript" src="/js/scrollspy.js"></script>
-    <script defer type="text/javascript" src="/js/fontawesome-all.min.js"></script>
-    <script defer type="text/javascript" src="/js/lightgallery.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-fullscreen.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-hash.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-pager.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-thumbnail.min.js"></script>
-    <script defer type="text/javascript" src="/js/lg-zoom.min.js"></script>
-    
-    <script defer src="/js/busuanzi.pure.mini.js"></script>
-    
-    
-    <script defer type="text/javascript" src="/js/search.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function () {
-      var searchPath = "search.xml";
-      if (searchPath.length == 0) {
-  	    searchPath = "search.xml";
-      }
-      var path = "/" + searchPath;
-      searchFunc(path, "search-input", "search-result");
-    });
-    </script>
-    
-    
-    <script defer type="text/javascript" src="/js/index.js"></script>
-    <script defer type="text/javascript" src="/js/custom.js"></script>
-    <title>Markdown 语法和 MWeb 写作使用说明 | Hexo</title>
-  </head>
-  <body itemscope itemtype="http://schema.org/WebPage" lang=""  data-spy="scroll" data-target=".list-group">
-    
-<header id="header" class="header">
-  <div class="container">
-    <div class="header-container">
-      <div class="header-title">
-        <h1 class="title"><a href="/">Hexo</a></h1>
-        <h2 class="subtitle"></h2>
-      </div>
-      <div class="logo">
-        <img src="/images/ARIA_logo.png" alt="logo">
-      </div>
-    </div>
-    
-<nav id="nav" class="nav">
-  <a id="nav-toggle" class="nav-toggle"><i class="fas fa-bars"></i></a>
-  <ul id="menu">
-    
-    <li><a href="/">Home</a></li>
-    
-    <li><a href="/archives/">Archives</a></li>
-    
-    <li><a href="/about/">About</a></li>
-    
-  </ul>
-</nav>
-
-
-  </div>
-</header>
-
-
-    <main id="main" class="main">
-      <div class="container">
-        <div class="main-container">
-          <div class="content">
-            
-<section id="post" class="post">
+<head>
+  <meta charset="utf-8">
   
-  <article class="post-container card" itemscope itemtype="http://schema.org/Article">
-    <div class="post-block">
-      <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/xxx/">
-      <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-       <meta itemprop="name" content="li.zhidan">
-       <meta itemprop="description" content="">
-       <meta itemprop="image" content="/images/avatar.png">
-      </span>
-      <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-       <meta itemprop="name" content="Hexo">
-      </span>
+  <title>Markdown 语法和 MWeb 写作使用说明 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Markdown 语法和 MWeb 写作使用说明Markdown 的设计哲学 Markdown 的目標是實現「易讀易寫」。不過最需要強調的便是它的可讀性。一份使用 Markdown 格式撰寫的文件應該可以直接以純文字發佈，並且看起來不會像是由許多標籤或是格式指令所構成。Markdown 的語法有個主要的目的：用來作為一種網路內容的寫作用語言。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown 语法和 MWeb 写作使用说明">
+<meta property="og:url" content="http://yoursite.com/2018/03/27/xxx/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Markdown 语法和 MWeb 写作使用说明Markdown 的设计哲学 Markdown 的目標是實現「易讀易寫」。不過最需要強調的便是它的可讀性。一份使用 Markdown 格式撰寫的文件應該可以直接以純文字發佈，並且看起來不會像是由許多標籤或是格式指令所構成。Markdown 的語法有個主要的目的：用來作為一種網路內容的寫作用語言。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
+<meta property="og:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
+<meta property="og:updated_time" content="2018-03-27T06:19:37.114Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown 语法和 MWeb 写作使用说明">
+<meta name="twitter:description" content="Markdown 语法和 MWeb 写作使用说明Markdown 的设计哲学 Markdown 的目標是實現「易讀易寫」。不過最需要強調的便是它的可讀性。一份使用 Markdown 格式撰寫的文件應該可以直接以純文字發佈，並且看起來不會像是由許多標籤或是格式指令所構成。Markdown 的語法有個主要的目的：用來作為一種網路內容的寫作用語言。">
+<meta name="twitter:image" content="http://zh.mweb.im/asset/img/set-up-git.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">li.zhidan</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>6</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
     </div>
-    <header class="post-header">
-      <h1 class="post-title" itemprop="name headline">
-       <span class="">Markdown 语法和 MWeb 写作使用说明</span>
-      </h1>
-      <div class="post-meta">
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
         
-        <span class="post-date">
-          <i class="far fa-calendar-plus"></i> <time title="post-date" itemprop="dateCreated datePublished" datetime="2018-03-27T14:25:52+08:00">2018-03-27</time>
-        </span>
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
         
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
         
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
         
-      </div>
-    </header>
-    <main class="post-body" itemprop="articleBody">
-      <h1 id="Markdown-语法和-MWeb-写作使用说明"><a href="#Markdown-语法和-MWeb-写作使用说明" class="headerlink" title="Markdown 语法和 MWeb 写作使用说明"></a>Markdown 语法和 MWeb 写作使用说明</h1><h2 id="Markdown-的设计哲学"><a href="#Markdown-的设计哲学" class="headerlink" title="Markdown 的设计哲学"></a>Markdown 的设计哲学</h2><blockquote>
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-xxx" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/27/xxx/" class="article-date">
+  <time class="post-time" datetime="2018-03-27T06:25:52.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">27</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Markdown 语法和 MWeb 写作使用说明
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Markdown-语法和-MWeb-写作使用说明"><a href="#Markdown-语法和-MWeb-写作使用说明" class="headerlink" title="Markdown 语法和 MWeb 写作使用说明"></a>Markdown 语法和 MWeb 写作使用说明</h1><h2 id="Markdown-的设计哲学"><a href="#Markdown-的设计哲学" class="headerlink" title="Markdown 的设计哲学"></a>Markdown 的设计哲学</h2><blockquote>
 <p>Markdown 的目標是實現「易讀易寫」。<br>不過最需要強調的便是它的可讀性。一份使用 Markdown 格式撰寫的文件應該可以直接以純文字發佈，並且看起來不會像是由許多標籤或是格式指令所構成。<br>Markdown 的語法有個主要的目的：用來作為一種網路內容的<em>寫作</em>用語言。</p>
 </blockquote>
 <a id="more"></a>
@@ -196,7 +166,7 @@
 <h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p>Markdown 语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">email &lt;example@example.com&gt;</span><br><span class="line">[GitHub](http://github.com)</span><br><span class="line">自动生成连接  &lt;http://www.github.com/&gt;</span><br></pre></td></tr></table></figure>
 <p><code>Control + Shift + L</code> 可插入Markdown语法。<br>如果是 MWeb 的文档库中的文档，拖放或<code>CMD + Option + I</code> 导入非图片时，会生成连接。<br>效果如下：</p>
-<p>Email 连接： <a href="mailto:&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;" target="_blank" rel="noopener">&#101;&#x78;&#x61;&#109;&#x70;&#108;&#x65;&#64;&#x65;&#120;&#97;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="noopener">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="noopener">http://www.github.com/</a> 这样</p>
+<p>Email 连接： <a href="mailto:&#101;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;" target="_blank" rel="noopener">&#101;&#x78;&#x61;&#109;&#112;&#108;&#x65;&#64;&#101;&#x78;&#97;&#109;&#112;&#x6c;&#101;&#x2e;&#99;&#111;&#x6d;</a><br><a href="http://github.com" target="_blank" rel="noopener">连接标题Github网站</a><br>自动生成连接像： <a href="http://www.github.com/" target="_blank" rel="noopener">http://www.github.com/</a> 这样</p>
 <h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>Markdown 语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">某某说:</span><br><span class="line">&gt; 第一行引用</span><br><span class="line">&gt; 第二行费用文字</span><br></pre></td></tr></table></figure>
 <p><code>CMD + Shift + B</code> 可插入Markdown语法。<br>效果如下：</p>
@@ -273,173 +243,189 @@
 <p>效果如下：</p>
 <p>[TOC]</p>
 
-    </main>
-    <footer class="post-footer">
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/27/xxx/" data-id="cjg6aj4ud00089sydp7obz0qd" class="article-share-link">分享</a>
       
       
     </footer>
-  </article>
-  
-  
-<div class="reward" id="reward">
-  <p>坚持原创技术分享，您的鼓励将是我继续前进的动力！</p>
-  <button id="reward-button" disable="enable">
-    <span>Reward</span>
-  </button>
-  <div id="qr" class="qr" style="display: none;">
-    
-    <div id="wechat">
-      <img id="wechat_qr" src="/images/WeChatPay.png" alt="WechatPay"/>
-      <span>WechatPay</span>
-    </div>
-    
-    
-    <div id="alipay">
-      <img id="alipay_qr" src="/images/AliPay.png" alt="AliPay"/>
-      <span>AliPay</span>
-    </div>
-    
-    
-  </div>
-</div>
-
-
-  
-  
-  <div class="post-nav">
-    
-    <div class="post-nav-next post-nav-item">
-      <a href="/2018/03/23/My-first/" rel="next" title="My first"><i class="fas fa-angle-left"></i> My first</a>
-    </div>
-    
-    <span class="post-nav-divider"></span>
-    
-    <div class="post-nav-prev post-nav-item">
-      <a href="/2018/04/01/关于ios指纹登陆功能/" rel="prev" title="关于ios指纹登陆功能">关于ios指纹登陆功能 <i class="fas fa-angle-right"></i></a>
-    </div>
-    
   </div>
   
+    
+<nav id="article-nav">
   
+    <a href="/2018/04/01/关于ios指纹登陆功能/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          关于ios指纹登陆功能
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/23/My-first/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">My first</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
 </section>
-
-          </div>
-          
-          
-          
-<aside class="sidebar" id="sidebar">
+        
+          <aside id="sidebar">
   
-  <div class="search">
-    <div class="form-group">
-      <i class="fas fa-search"></i> <input type="text" id="search-input" name="q" results="0" placeholder="Search" class="form-control"/>
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Hexo</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">li.zhidan</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>6</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/lizhid" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://xybank.github.io/" target="_blank" title="Xybk">
+          Xybk
+        </a>
+      
     </div>
   </div>
-  <div class="search-result-box" id="search-result"></div>
-  
-  
-<div class="author sidebar-item" id="author">
-  
-  <img class="author-avatar" src="/images/avatar.png" alt="li.zhidan">
-  
-  <p class="author-name">li.zhidan</p>
-  <p class="author-description"> </p>
 </div>
-
-
-  
-  <a class="rss button sidebar-item" href="/atom.xml"><i class="fas fa-rss"></i> RSS</a>
-  
-  
-  <hr>
-  
-<div class="social-links sidebar-item">
-  <p><i class="far fa-address-card"></i> Social Links</p>
-  <ul>
-    
-    <li><i class="fab fa-github"></i> <a href="https://github.com/" target="_blank">GitHub</a></li>
-    
-    <li><i class="fab fa-weibo"></i> <a href="https://weibo.com/" target="_blank">Weibo</a></li>
-    
-  </ul>
-</div>
-
-
-  
-  <hr>
-  
-
-<div class="blogroll sidebar-item">
-  <p><i class="fas fa-link"></i> Blogroll</p>
-  <ul>
-    
-    <li><a href="https://developer.mozilla.org/" target="_blank">MDN</a></li>
-    
-    <li><a href="https://mozilla.github.io/nunjucks/" target="_blank">Nunjucks</a></li>
-    
-    <li><a href="http://stylus-lang.com/" target="_blank">Stylus</a></li>
-    
-  </ul>
-</div>
-
-
-
-  
-  
-  <hr>
-  
-
-
-<div class="post-toc sidebar-item" id="post-toc">
-  <p><i class="fas fa-list-ol"></i> Table of Contents</p>
-  <div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Markdown-语法和-MWeb-写作使用说明"><span class="toc-text">Markdown 语法和 MWeb 写作使用说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Markdown-的设计哲学"><span class="toc-text">Markdown 的设计哲学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文约定"><span class="toc-text">本文约定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标题"><span class="toc-text">标题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一级标题-lt-h1-gt"><span class="toc-text">第一级标题 &lt;h1&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第二级标题-lt-h2-gt"><span class="toc-text">第二级标题 &lt;h2&gt;</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#第六级标题-lt-h6-gt"><span class="toc-text">第六级标题 &lt;h6&gt;</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强调"><span class="toc-text">强调</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#换行"><span class="toc-text">换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#无序列表"><span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#有序列表"><span class="toc-text">有序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表中嵌入代码块语法"><span class="toc-text">列表中嵌入代码块语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#任务列表（Task-lists）"><span class="toc-text">任务列表（Task lists）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片"><span class="toc-text">图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#链接"><span class="toc-text">链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区块引用"><span class="toc-text">区块引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#行内代码"><span class="toc-text">行内代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多行或者一段代码"><span class="toc-text">多行或者一段代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序图或流程图"><span class="toc-text">顺序图或流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格"><span class="toc-text">表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除线"><span class="toc-text">删除线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分隔线"><span class="toc-text">分隔线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MathJax"><span class="toc-text">MathJax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚注（Footnote）"><span class="toc-text">脚注（Footnote）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释和阅读更多"><span class="toc-text">注释和阅读更多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TOC"><span class="toc-text">TOC</span></a></li></ol></li></ol></div>
-</div>
-
-
 
   
 </aside>
-
-
-          
-        </div>
+        
       </div>
-    </main>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2017 - 2018 li.zhidan<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
     
-<footer id="footer" class="footer">
-  <div class="container">
-    <div class="back-to-top">
-      <a id="back-to-top"><i class="fas fa-angle-double-up"></i></a>
-    </div>
-    <div class="footer-container">
-      <div class="footer-left">
-        <div class="copyright">
-          <span class="author">li.zhidan</span> <i class="far fa-copyright"></i> <span class="year">2018</span>
-        </div>
-        
-        
-<div class="busuanzi">
-  <span id="busuanzi_container_site_pv"><i class="fas fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
-  <span id="busuanzi_container_site_uv"><i class="fas fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
-  <span id="busuanzi_container_page_pv"><i class="far fa-file-alt"></i> <span id="busuanzi_value_page_pv"></span></span>
-</div>
-
-
-        
-      </div>
-      <div class="footer-right">
-        <div class="custom-info">
-          
-          托管于 <i class="fab fa-github-alt"></i> <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
-          
-        </div>
-        <div class="powered-by">
-          Proudly Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> | Theme is <a href="https://github.com/AlynxZhou/hexo-theme-aria/" target="_blank">ARIA</a>
-        </div>
-      </div>
-    </div>
   </div>
 </footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
 
 
-  </body>
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="plugin/galmenu/wulusai.mp3"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
 </html>
