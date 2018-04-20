@@ -1369,6 +1369,7 @@ a.article-title:hover {
   font-weight: bold;
   border-bottom: 3px solid #ddd;
   padding-bottom: 0.5em;
+  width: 92px;
 }
 .article-entry td {
   border-bottom: 1px solid #ddd;
