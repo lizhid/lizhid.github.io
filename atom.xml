@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-29T07:47:44.799Z</updated>
+  <updated>2018-05-29T08:16:08.834Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,17 +17,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>Bootstrap 轮播（Carousel）插件</title>
     <link href="http://yoursite.com/2018/05/29/Bootstrap%20Carousel/"/>
     <id>http://yoursite.com/2018/05/29/Bootstrap Carousel/</id>
-    <published>2018-05-29T07:39:12.043Z</published>
-    <updated>2018-05-29T07:47:44.799Z</updated>
+    <published>2018-05-29T08:10:00.000Z</published>
+    <updated>2018-05-29T08:16:08.834Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;Bootstrap-轮播（Carousel）插件&quot;&gt;&lt;a href=&quot;#Bootstrap-轮播（Carousel）插件&quot; class=&quot;headerlink&quot; title=&quot;Bootstrap 轮播（Carousel）插件&quot;&gt;&lt;/a&gt;Bootstrap 轮播（Carousel）插件&lt;/h1&gt;&lt;p&gt;Bootstrap 轮播（Carousel）插件是一种灵活的响应式的向站点添加滑块的方式。除此之外，内容也是足够灵活的，可以是图像、内嵌框架、视频或者其他您想要放置的任何类型的内容。&lt;/p&gt;
+      &lt;p&gt;Bootstrap 轮播（Carousel）插件是一种灵活的响应式的向站点添加滑块的方式。除此之外，内容也是足够灵活的，可以是图像、内嵌框架、视频或者其他您想要放置的任何类型的内容。&lt;/p&gt;
     
     </summary>
+    
+      <category term="李志丹" scheme="http://yoursite.com/categories/%E6%9D%8E%E5%BF%97%E4%B8%B9/"/>
     
     
   </entry>
