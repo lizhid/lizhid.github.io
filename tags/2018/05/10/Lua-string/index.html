@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Lua strings | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="字符串或串(String)是由数字、字母、下划线组成的一串字符。">
+<meta name="keywords" content="string">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lua strings">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/Lua-string/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="字符串或串(String)是由数字、字母、下划线组成的一串字符。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-10T05:55:06.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lua strings">
+<meta name="twitter:description" content="字符串或串(String)是由数字、字母、下划线组成的一串字符。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">li.zhidan</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>7</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-Lua-string" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/10/Lua-string/" class="article-date">
+  <time class="post-time" datetime="2018-05-10T08:27:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">10</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Lua strings
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/李志丹/">李志丹</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>字符串或串(String)是由数字、字母、下划线组成的一串字符。<br><a id="more"></a><br>Lua 语言中字符串可以使用以下三种方式来表示：</p>
+<ul>
+<li>单引号间的一串字符。</li>
+<li>双引号间的一串字符。</li>
+<li>[[和]]间的一串字符。</li>
+</ul>
+<p>转义字符用于表示不能直接显示的字符，比如后退键，回车键，等。如在字符串转换双引号可以使用 “\””。</p>
+<p>所有的转义字符和所对应的意义：</p>
+<table>
+<thead>
+<tr>
+<th>转义字符</th>
+<th>意义</th>
+<th>ASCII码值（十进制）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td>响铃(BEL)</td>
+<td>007</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格(BS) ，将当前位置移到前一列</td>
+<td>008</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页(FF)，将当前位置移到下页开头</td>
+<td>012</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行(LF) ，将当前位置移到下一行开头</td>
+<td>010</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车(CR) ，将当前位置移到本行开头</td>
+<td>013</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>水平制表(HT) （跳到下一个TAB位置）</td>
+<td>009</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表(VT)</td>
+<td>011</td>
+</tr>
+<tr>
+<td>\</td>
+<td>代表一个反斜线字符’’\’</td>
+<td>092</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>代表一个单引号（撇号）字符</td>
+<td>039</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>代表一个双引号字符</td>
+<td>034</td>
+</tr>
+<tr>
+<td>\0</td>
+<td>空字符(NULL)</td>
+<td>000</td>
+</tr>
+<tr>
+<td>\ddd</td>
+<td>1到3位八进制数所代表的任意字符</td>
+<td>三位八进制</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>1到2位十六进制所代表的任意字符</td>
+<td>二位十六进制</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a>字符串操作</h2><p>Lua 提供了很多的方法来支持字符串的操作：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法 &amp; 用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>string.upper(argument):</strong>字符串全部转为大写字母。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>string.lower(argument):</strong>字符串全部转为小写字母。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>string.gsub(mainString,findString,replaceString,num)</strong>在字符串中替换,mainString为要替换的字符串， findString 为被替换的字符，replaceString 要替换的字符，num 替换次数（可以忽略，则全部替换），如：<code>&gt; string.gsub(&quot;aaaa&quot;,&quot;a&quot;,&quot;z&quot;,3);zzza    3</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>string.sub(s,i,j)</strong>      函数截取字符串s的从第i个字符到第j个字符之间的串。Lua中，字符串的第一个字符索引从1开始。你也可以使用负索引，负索引从字符串的结尾向前计数：-1指向最后一个字符，-2指向倒数第二个，以此类推。所以， string.sub(s, 1, j)返回字符串s的长度为j的前缀；string.sub(s, j, -1)返回从第j个字符开始的后缀。如果不提供第3个参数，默认为-1，因此我们将最后一个调用写为string.sub(s, j)；string.sub(s, 2, -2)返回去除第一个和最后一个字符后的子串。</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>string.find (str, substr, [init, [end]])</strong>在一个指定的目标字符串中搜索指定的内容(第三个参数为索引),返回其具体位置。不存在则返回 nil。<code>&gt; string.find(&quot;Hello Lua user&quot;, &quot;Lua&quot;, 1) 7    9</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>string.reverse(arg)</strong>字符串反转<code>&gt; string.reverse(&quot;Lua&quot;)auL</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>string.format(…)</strong>返回一个类似printf的格式化字符串<code>&gt; string.format(&quot;the value is:%d&quot;,4)the value is:4</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>string.char(arg) 和 string.byte(arg[,int])</strong>char 将整型数字转成字符并连接， byte 转换字符为整数值(可以指定某个字符，默认第一个字符)。<code>&gt; string.char(97,98,99,100)abcd&gt; string.byte(&quot;ABCD&quot;,4)68&gt; string.byte(&quot;ABCD&quot;)65&gt;</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>string.len(arg)</strong>计算字符串长度。<code>string.len(&quot;abc&quot;)3</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>string.rep(string, n)</strong>返回字符串string的n个拷贝<code>&gt; string.rep(&quot;abcd&quot;,2)abcdabcd</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>..</strong>链接两个字符串<code>&gt; print(&quot;www.runoob&quot;..&quot;com&quot;)www.runoobcom</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>string.gmatch(str, pattern)</strong>回一个迭代器函数，每一次调用这个函数，返回一个在字符串 str 找到的下一个符合 pattern 描述的子串。如果参数 pattern 描述的字符串没有找到，迭代函数返回nil。<code>&gt; for word in string.gmatch(&quot;Hello Lua user&quot;, &quot;%a+&quot;) do print(word) endHelloLuauser</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>string.match(str, pattern, init)</strong>string.match()只寻找源字串str中的第一个配对. 参数init可选, 指定搜寻过程的起点, 默认为1。 在成功配对时, 函数将返回配对表达式中的所有捕获结果; 如果没有设置捕获标记, 则返回整个配对字符串. 当没有成功的配对时, 返回nil。<code>&gt; = string.match(&quot;I have 2 questions for you.&quot;, &quot;%d+ %a+&quot;)2 questions&gt; = string.format(&quot;%d, %q&quot;, string.match(&quot;I have 2 questions for you.&quot;, &quot;(%d+) (%a+)&quot;))2, &quot;questions&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="字符串大小写转换"><a href="#字符串大小写转换" class="headerlink" title="字符串大小写转换"></a>字符串大小写转换</h3><p>以下实例演示了如何对字符串大小写进行转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string1 = &quot;Lua&quot;;</span><br><span class="line">print(string.upper(string1))</span><br><span class="line">print(string.lower(string1))</span><br></pre></td></tr></table></figure>
+<p>以上代码执行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LUA</span><br><span class="line">lua</span><br></pre></td></tr></table></figure>
+<h3 id="字符串查找与反转"><a href="#字符串查找与反转" class="headerlink" title="字符串查找与反转"></a>字符串查找与反转</h3><p>以下实例演示了如何对字符串进行查找与反转操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string = &quot;Lua Tutorial&quot;</span><br><span class="line">-- 查找字符串</span><br><span class="line">print(string.find(string,&quot;Tutorial&quot;))</span><br><span class="line">reversedString = string.reverse(string)</span><br><span class="line">print(&quot;新字符串为&quot;,reversedString)</span><br></pre></td></tr></table></figure>
+<p>以上代码执行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5    12</span><br><span class="line">新字符串为    lairotuT auL</span><br></pre></td></tr></table></figure>
+<h3 id="字符串格式化"><a href="#字符串格式化" class="headerlink" title="字符串格式化"></a>字符串格式化</h3><p>Lua 提供了 string.format() 函数来生成具有特定格式的字符串, 函数的第一个参数是格式 , 之后是对应格式中每个代号的各种数据。</p>
+<p>由于格式字符串的存在, 使得产生的长字符串可读性大大提高了。这个函数的格式很像 C 语言中的 printf()。</p>
+<p>以下实例演示了如何对字符串进行格式化操作：</p>
+<p>格式字符串可能包含以下的转义码:</p>
+<ul>
+<li>%c - 接受一个数字, 并将其转化为ASCII码表中对应的字符</li>
+<li>%d, %i - 接受一个数字并将其转化为有符号的整数格式</li>
+<li>%o - 接受一个数字并将其转化为八进制数格式</li>
+<li>%u - 接受一个数字并将其转化为无符号整数格式</li>
+<li>%x - 接受一个数字并将其转化为十六进制数格式, 使用小写字母</li>
+<li>%X - 接受一个数字并将其转化为十六进制数格式, 使用大写字母</li>
+<li>%e - 接受一个数字并将其转化为科学记数法格式, 使用小写字母e</li>
+<li>%E - 接受一个数字并将其转化为科学记数法格式, 使用大写字母E</li>
+<li>%f - 接受一个数字并将其转化为浮点数格式</li>
+<li>%g(%G) - 接受一个数字并将其转化为%e(%E, 对应%G)及%f中较短的一种格式</li>
+<li>%q - 接受一个字符串并将其转化为可安全被Lua编译器读入的格式</li>
+<li>%s - 接受一个字符串并按照给定的参数格式化该字符串</li>
+</ul>
+<p>为进一步细化格式, 可以在%号后添加参数. 参数将以如下的顺序读入:</p>
+<ul>
+<li>(1) 符号: 一个+号表示其后的数字转义符将让正数显示正号. 默认情况下只有负数显示符号.</li>
+<li>(2) 占位符: 一个0, 在后面指定了字串宽度时占位用. 不填时的默认占位符是空格.</li>
+<li>(3) 对齐标识: 在指定了字串宽度时, 默认为右对齐, 增加-号可以改为左对齐.</li>
+<li>(4) 宽度数值</li>
+<li>(5) 小数位数/字串裁切: 在宽度数值后增加的小数部分n, 若后接f(浮点数转义符, 如%6.3f)则设定该浮点数的小数只保留n位, 若后接s(字符串转义符, 如%5.3s)则设定该字符串只显示前n位.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">string1 = &quot;Lua&quot;</span><br><span class="line">string2 = &quot;Tutorial&quot;</span><br><span class="line">number1 = 10</span><br><span class="line">number2 = 20</span><br><span class="line">-- 基本字符串格式化</span><br><span class="line">print(string.format(&quot;基本格式化 %s %s&quot;,string1,string2))</span><br><span class="line">-- 日期格式化</span><br><span class="line">date = 2; month = 1; year = 2014</span><br><span class="line">print(string.format(&quot;日期格式化 %02d/%02d/%03d&quot;, date, month, year))</span><br><span class="line">-- 十进制格式化</span><br><span class="line">print(string.format(&quot;%.4f&quot;,1/3))</span><br></pre></td></tr></table></figure>
+<p>以上代码执行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">基本格式化 Lua Tutorial</span><br><span class="line">日期格式化 02/01/2014</span><br><span class="line">0.3333</span><br></pre></td></tr></table></figure>
+<p>其他例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">string.format(&quot;%c&quot;, 83)            输出S</span><br><span class="line">string.format(&quot;%+d&quot;, 17.0)              输出+17</span><br><span class="line">string.format(&quot;%05d&quot;, 17)               输出00017</span><br><span class="line">string.format(&quot;%o&quot;, 17)                 输出21</span><br><span class="line">string.format(&quot;%u&quot;, 3.14)               输出3</span><br><span class="line">string.format(&quot;%x&quot;, 13)                 输出d</span><br><span class="line">string.format(&quot;%X&quot;, 13)                 输出D</span><br><span class="line">string.format(&quot;%e&quot;, 1000)               输出1.000000e+03</span><br><span class="line">string.format(&quot;%E&quot;, 1000)               输出1.000000E+03</span><br><span class="line">string.format(&quot;%6.3f&quot;, 13)              输出13.000</span><br><span class="line">string.format(&quot;%q&quot;, &quot;One\nTwo&quot;)         输出&quot;One\</span><br><span class="line">                                        　　Two&quot;</span><br><span class="line">string.format(&quot;%s&quot;, &quot;monkey&quot;)           输出monkey</span><br><span class="line">string.format(&quot;%10s&quot;, &quot;monkey&quot;)         输出    monkey</span><br><span class="line">string.format(&quot;%5.3s&quot;, &quot;monkey&quot;)        输出  mon</span><br></pre></td></tr></table></figure>
+<h3 id="字符与整数相互转换"><a href="#字符与整数相互转换" class="headerlink" title="字符与整数相互转换"></a>字符与整数相互转换</h3><p>以下实例演示了字符与整数相互转换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- 字符转换</span><br><span class="line">-- 转换第一个字符</span><br><span class="line">print(string.byte(&quot;Lua&quot;))</span><br><span class="line">-- 转换第三个字符</span><br><span class="line">print(string.byte(&quot;Lua&quot;,3))</span><br><span class="line">-- 转换末尾第一个字符</span><br><span class="line">print(string.byte(&quot;Lua&quot;,-1))</span><br><span class="line">-- 第二个字符</span><br><span class="line">print(string.byte(&quot;Lua&quot;,2))</span><br><span class="line">-- 转换末尾第二个字符</span><br><span class="line">print(string.byte(&quot;Lua&quot;,-2))</span><br><span class="line"></span><br><span class="line">-- 整数 ASCII 码转换为字符</span><br><span class="line">print(string.char(97))</span><br></pre></td></tr></table></figure>
+<p>以上代码执行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">76</span><br><span class="line">97</span><br><span class="line">97</span><br><span class="line">117</span><br><span class="line">117</span><br><span class="line">a</span><br></pre></td></tr></table></figure>
+<h3 id="其他常用函数"><a href="#其他常用函数" class="headerlink" title="其他常用函数"></a>其他常用函数</h3><p>以下实例演示了其他字符串操作，如计算字符串长度，字符串连接，字符串复制等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">string1 = &quot;www.&quot;</span><br><span class="line">string2 = &quot;runoob&quot;</span><br><span class="line">string3 = &quot;.com&quot;</span><br><span class="line">-- 使用 .. 进行字符串连接</span><br><span class="line">print(&quot;连接字符串&quot;,string1..string2..string3)</span><br><span class="line"></span><br><span class="line">-- 字符串长度</span><br><span class="line">print(&quot;字符串长度 &quot;,string.len(string2))</span><br><span class="line"></span><br><span class="line">-- 字符串复制 2 次</span><br><span class="line">repeatedString = string.rep(string2,2)</span><br><span class="line">print(repeatedString)</span><br></pre></td></tr></table></figure>
+<p>以上代码执行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">连接字符串    www.runoob.com</span><br><span class="line">字符串长度     6</span><br><span class="line">runoobrunoob</span><br></pre></td></tr></table></figure>
+<h3 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h3><p>Lua 中的匹配模式直接用常规的字符串来描述。 它用于模式匹配函数 string.find, string.gmatch, string.gsub, string.match。</p>
+<p>你还可以在模式串中使用字符类。</p>
+<p>字符类指可以匹配一个特定字符集合内任何字符的模式项。比如，字符类%d匹配任意数字。所以你可以使用模式串 ‘%d%d/%d%d/%d%d%d%d’ 搜索 dd/mm/yyyy 格式的日期：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s = &quot;Deadline is 30/05/1999, firm&quot;</span><br><span class="line">date = &quot;%d%d/%d%d/%d%d%d%d&quot;</span><br><span class="line">print(string.sub(s, string.find(s, date)))    --&gt; 30/05/1999</span><br></pre></td></tr></table></figure>
+<p>下面的表列出了Lua支持的所有字符类：</p>
+<p>单个字符(除 ^$()%.[]*+-? 外): 与该字符自身配对</p>
+<ul>
+<li><p>.(点): 与任何字符配对</p>
+</li>
+<li><p>%a: 与任何字母配对</p>
+</li>
+<li><p>%c: 与任何控制符配对(例如\n)</p>
+</li>
+<li><p>%d: 与任何数字配对</p>
+</li>
+<li><p>%l: 与任何小写字母配对</p>
+</li>
+<li><p>%p: 与任何标点(punctuation)配对</p>
+</li>
+<li><p>%s: 与空白字符配对</p>
+</li>
+<li><p>%u: 与任何大写字母配对</p>
+</li>
+<li><p>%w: 与任何字母/数字配对</p>
+</li>
+<li><p>%x: 与任何十六进制数配对</p>
+</li>
+<li><p>%z: 与任何代表0的字符配对</p>
+</li>
+<li><p>%x(此处x是非字母非数字字符): 与字符x配对. 主要用来处理表达式中有功能的字符(^$()%.[]*+-?)的配对问题, 例如%%与%配对</p>
+</li>
+<li><p>[数个字符类]: 与任何[]中包含的字符类配对. 例如[%w_]与任何字母/数字, 或下划线符号(_)配对</p>
+</li>
+<li><p>[^数个字符类]: 与任何不包含在[]中的字符类配对. 例如[^%s]与任何非空白字符配对</p>
+</li>
+</ul>
+<p>当上述的字符类用大写书写时, 表示与非此字符类的任何字符配对. 例如, %S表示与任何非空白字符配对.例如，’%A’非字母的字符:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; print(string.gsub(&quot;hello, up-down!&quot;, &quot;%A&quot;, &quot;.&quot;))</span><br><span class="line">hello..up.down.    4</span><br></pre></td></tr></table></figure>
+<p>数字4不是字符串结果的一部分，他是gsub返回的第二个结果，代表发生替换的次数。</p>
+<p>在模式匹配中有一些特殊字符，他们有特殊的意义，Lua中的特殊字符如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">( ) . % + - * ? [ ^ $</span><br></pre></td></tr></table></figure>
+<p>‘%’ 用作特殊字符的转义字符，因此 ‘%.’ 匹配点；’%%’ 匹配字符 ‘%’。转义字符 ‘%’不仅可以用来转义特殊字符，还可以用于所有的非字母的字符。</p>
+<p><strong>模式条目可以是：</strong></p>
+<ul>
+<li>单个字符类匹配该类别中任意单个字符；</li>
+<li>单个字符类跟一个 ‘<code>*</code>‘， 将匹配零或多个该类的字符。 这个条目总是匹配尽可能长的串；</li>
+<li>单个字符类跟一个 ‘<code>+</code>‘， 将匹配一或更多个该类的字符。 这个条目总是匹配尽可能长的串；</li>
+<li>单个字符类跟一个 ‘<code>-</code>‘， 将匹配零或更多个该类的字符。 和 ‘<code>*</code>‘ 不同， 这个条目总是匹配尽可能短的串；</li>
+<li>单个字符类跟一个 ‘<code>?</code>‘， 将匹配零或一个该类的字符。 只要有可能，它会匹配一个；</li>
+<li><code>%*n*</code>， 这里的 <em>n</em> 可以从 1 到 9； 这个条目匹配一个等于 <em>n</em> 号捕获物（后面有描述）的子串。</li>
+<li><code>%b*xy*</code>， 这里的 <em>x</em> 和 <em>y</em> 是两个明确的字符； 这个条目匹配以 <em>x</em> 开始 <em>y</em> 结束， 且其中 <em>x</em> 和 <em>y</em> 保持 <em>平衡</em> 的字符串。 意思是，如果从左到右读这个字符串，对每次读到一个 <em>x</em> 就 <em>+1</em> ，读到一个 <em>y</em> 就 <em>-1</em>， 最终结束处的那个 <em>y</em> 是第一个记数到 0 的 <em>y</em>。 举个例子，条目 <code>%b()</code> 可以匹配到括号平衡的表达式。</li>
+<li><code>%f[*set*]</code>， 指 <em>边境模式</em>； 这个条目会匹配到一个位于 <em>set</em> 内某个字符之前的一个空串， 且这个位置的前一个字符不属于 <em>set</em> 。 集合 <em>set</em> 的含义如前面所述。 匹配出的那个空串之开始和结束点的计算就看成该处有个字符 ‘<code>\0</code>‘ 一样。</li>
+</ul>
+<p><strong>模式：</strong></p>
+<p><em>模式</em> 指一个模式条目的序列。 在模式最前面加上符号 ‘<code>^</code>‘ 将锚定从字符串的开始处做匹配。 在模式最后面加上符号 ‘<code>$</code>‘ 将使匹配过程锚定到字符串的结尾。 如果 ‘<code>^</code>‘ 和 ‘<code>$</code>‘ 出现在其它位置，它们均没有特殊含义，只表示自身。</p>
+<p><strong>捕获：</strong></p>
+<p>模式可以在内部用小括号括起一个子模式； 这些子模式被称为 <em>捕获物</em>。 当匹配成功时，由 <em>捕获物</em> 匹配到的字符串中的子串被保存起来用于未来的用途。 捕获物以它们左括号的次序来编号。 例如，对于模式 <code>&quot;(a*(.)%w(%s*))&quot;</code> ， 字符串中匹配到 <code>&quot;a*(.)%w(%s*)&quot;</code> 的部分保存在第一个捕获物中 （因此是编号 1 ）； 由 “<code>.</code>“ 匹配到的字符是 2 号捕获物， 匹配到 “<code>%s*</code>“ 的那部分是 3 号。</p>
+<p>作为一个特例，空的捕获 <code>()</code> 将捕获到当前字符串的位置（它是一个数字）。 例如，如果将模式 <code>&quot;()aa()&quot;</code> 作用到字符串<code>&quot;flaaap&quot;</code> 上，将产生两个捕获物： 3 和 5 。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/10/Lua-string/" data-id="cjg7cqoyh00005oydf61yzbm4" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/string/">string</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/29/Bootstrap Carousel/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/09/React/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">React 简单介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Hexo</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">li.zhidan</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>7</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>2</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/lizhid" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://xybank.github.io/" target="_blank" title="Xybk">
+          Xybk
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2017 - 2018 li.zhidan<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="plugin/galmenu/wulusai.mp3"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
