@@ -12,14 +12,13 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Bootstrap 轮播（Carousel）插件是一种灵活的响应式的向站点添加滑块的方式。除此之外，内容也是足够灵活的，可以是图像、内嵌框架、视频或者其他您想要放置的任何类型的内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.runoob.com/images/quote.png">
 <meta property="og:image" content="http://yoursite.com/img/lunbo.png">
 <meta property="og:image" content="http://yoursite.com/img/lunbo2.png">
-<meta property="og:updated_time" content="2018-05-29T08:16:08.834Z">
+<meta property="og:updated_time" content="2018-05-30T01:57:44.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bootstrap 轮播（Carousel）插件">
 <meta name="twitter:description" content="Bootstrap 轮播（Carousel）插件是一种灵活的响应式的向站点添加滑块的方式。除此之外，内容也是足够灵活的，可以是图像、内嵌框架、视频或者其他您想要放置的任何类型的内容。">
-<meta name="twitter:image" content="http://www.runoob.com/images/quote.png">
+<meta name="twitter:image" content="http://yoursite.com/img/lunbo.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -110,9 +109,6 @@
       
         <p>Bootstrap 轮播（Carousel）插件是一种灵活的响应式的向站点添加滑块的方式。除此之外，内容也是足够灵活的，可以是图像、内嵌框架、视频或者其他您想要放置的任何类型的内容。</p>
 <a id="more"></a>
-<blockquote>
-<p><img src="http://www.runoob.com/images/quote.png" alt="img">如果您想要单独引用该插件的功能，那么您需要引用 <strong>carousel.js</strong>。或者，正如 <a href="http://www.runoob.com/bootstrap/bootstrap-plugins-overview.html" target="_blank" rel="noopener">Bootstrap 插件概览</a> 一章中所提到，您可以引用 <em>bootstrap.js</em> 或压缩版的 <em>bootstrap.min.js</em>。</p>
-</blockquote>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面是一个简单的幻灯片，使用 Bootstrap 轮播（Carousel）插件显示了一个循环播放元素的通用组件。为了实现轮播，您只需要添加带有该标记的代码即可。不需要使用 data 属性，只需要简单的基于 class 的开发即可。</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;myCarousel&quot; class=&quot;carousel slide&quot;&gt;</span><br><span class="line">    &lt;!-- 轮播（Carousel）指标 --&gt;</span><br><span class="line">    &lt;ol class=&quot;carousel-indicators&quot;&gt;</span><br><span class="line">        &lt;li data-target=&quot;#myCarousel&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li data-target=&quot;#myCarousel&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li data-target=&quot;#myCarousel&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;   </span><br><span class="line">    &lt;!-- 轮播（Carousel）项目 --&gt;</span><br><span class="line">    &lt;div class=&quot;carousel-inner&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;item active&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;/wp-content/uploads/2014/07/slide1.png&quot; alt=&quot;First slide&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;/wp-content/uploads/2014/07/slide2.png&quot; alt=&quot;Second slide&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">            &lt;img src=&quot;/wp-content/uploads/2014/07/slide3.png&quot; alt=&quot;Third slide&quot;&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;!-- 轮播（Carousel）导航 --&gt;</span><br><span class="line">    &lt;a class=&quot;carousel-control left&quot; href=&quot;#myCarousel&quot; </span><br><span class="line">       data-slide=&quot;prev&quot;&gt; &lt;span _ngcontent-c3=&quot;&quot; aria-hidden=&quot;true&quot; class=&quot;glyphicon glyphicon-chevron-right&quot;&gt;&lt;/span&gt;&lt;/a&gt;</span><br><span class="line">    &lt;a class=&quot;carousel-control right&quot; href=&quot;#myCarousel&quot; </span><br><span class="line">       data-slide=&quot;next&quot;&gt;&amp;rsaquo;&lt;/a&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>结果如下所示：</p>
