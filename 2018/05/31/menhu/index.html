@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>手机银行和门户联调功能 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单介绍下当初和门户联调的一些功能。">
+<meta name="keywords" content="app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手机银行和门户联调功能">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/menhu/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简单介绍下当初和门户联调的一些功能。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/img/lizd/cib1.png">
+<meta property="og:image" content="http://yoursite.com/img/lizd/cib2.png">
+<meta property="og:image" content="http://yoursite.com/img/lizd/cib3.png">
+<meta property="og:image" content="http://yoursite.com/img/lizd/cib4.png">
+<meta property="og:image" content="http://yoursite.com/img/lizd/cib5.png">
+<meta property="og:updated_time" content="2018-05-31T07:00:55.712Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手机银行和门户联调功能">
+<meta name="twitter:description" content="简单介绍下当初和门户联调的一些功能。">
+<meta name="twitter:image" content="http://yoursite.com/img/lizd/cib1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">li.zhidan</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-menhu" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/31/menhu/" class="article-date">
+  <time class="post-time" datetime="2018-05-31T07:30:00.000Z" itemprop="datePublished">
+    <span class="post-month">5月</span><br/>
+    <span class="post-day">31</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      手机银行和门户联调功能
+    </h1>
+  
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/李志丹/">李志丹</a>
+  </div>
+
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单介绍下当初和门户联调的一些功能。<br><a id="more"></a></p>
+<p>####RSA加密</p>
+<p>手机银行进入多元金融首页需数据加密传入，和门户约定使用RSA加密。门户提供公钥给手机银行对数据进行加密，门户收到数据后用私钥解密。</p>
+<p>####数据验签说明</p>
+<p>1、集团门户为每个子系统分配一个md5key，作为md5摘要计算的盐值。</p>
+<p>2、通信内容MD5签名过程：通信请求方将相关请求参数值做md5计算获取到校验串并发送给通信接收方。</p>
+<p>3、通信内容MD5验签过程：通信接收方将收到的相关请求参数值做md5计算得到校验串，并跟收到的校验串做比对，一致则认为验签成功，不一致则验签失败。</p>
+<p>####时间戳</p>
+<p>手机银行加密的数据拼上请求时的时间戳进行加密。</p>
+<p>1、门户从加密数据内容中获取到手机银行的时间戳T1，以及门户当前系统时间戳T2。</p>
+<p>当满足-10秒&lt;T2-T1&lt;30秒时，认为该请求是有效的，否则为无效。</p>
+<p>2、通信接受方必须实现防重放攻击即收到的同一请求的url（带敏感信息的url），保证第一次收到时才有效。</p>
+<p>3、 通信双方的系统时间保证跟北京时间同步。</p>
+<p>4、手机银行客户端需要自定义请求报文头的user-agent信息，增加请求来源标识，统一为“cibbank”,以此增加授信机制。</p>
+<p>5、门户和子公司交互均使用https协议。</p>
+<h4 id="报文信息详细"><a href="#报文信息详细" class="headerlink" title="报文信息详细"></a>报文信息详细</h4><p>######A01</p>
+<p>1）业务场景</p>
+<p>   手机银行已登录用户访问集团门户</p>
+<p>2）请求方式</p>
+<p>https:// app端集团门户入口地址?from=xxx&amp;data=xxx&amp;mac=xxx </p>
+<p>3）data报文信息</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>是否必输</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sn</strong></td>
+<td>是</td>
+<td>A01</td>
+</tr>
+<tr>
+<td><strong>from</strong></td>
+<td>是</td>
+<td>通信发起方系统编号</td>
+</tr>
+<tr>
+<td><strong>certType</strong></td>
+<td>是</td>
+<td>app登录用户证件类型</td>
+</tr>
+<tr>
+<td><strong>certNo</strong></td>
+<td>是</td>
+<td>app登录用户证件号码</td>
+</tr>
+<tr>
+<td><strong>custName</strong></td>
+<td>是</td>
+<td>app登录用户姓名</td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td>是</td>
+<td>发起系统时间戳</td>
+</tr>
+<tr>
+<td><strong>target</strong></td>
+<td>否</td>
+<td>使用场景：集团门户调用app的登录脚本（doHomeAppLogin）时，会传个target参数，在app登录后需重定向到门户页面时必须带上target参数，参数值为门户js接口传递的那个值</td>
+</tr>
+</tbody>
+</table>
+<p>######A02</p>
+<p>1）业务场景</p>
+<p>   手机银行app未登录用户访问集团门户。</p>
+<p>2）请求方式</p>
+<p>https:// app端集团门户入口地址?from=xxx&amp;data=xxx&amp;mac=xxx</p>
+<p>3）data报文信息</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>是否必输</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sn</strong></td>
+<td>是</td>
+<td>A02</td>
+</tr>
+<tr>
+<td><strong>from</strong></td>
+<td>是</td>
+<td>通信发起方系统编号</td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td>是</td>
+<td>发起系统时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>######AA1</p>
+<p>1）业务场景</p>
+<p>   手机银行app已登录用户访问财富总览(提供给原手机银行财富总览功能跳转使用，门户接受请求后响应财富总览功能页，并且返回直接回到APP)</p>
+<p>2）请求方式</p>
+<p>https:// app端集团门户入口地址?from=xxx&amp;data=xxx&amp;mac=xxx</p>
+<p>3）data报文信息</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名</strong></th>
+<th><strong>是否必输</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>sn</strong></td>
+<td>是</td>
+<td>AA1</td>
+</tr>
+<tr>
+<td><strong>from</strong></td>
+<td>是</td>
+<td>通信发起方系统编号</td>
+</tr>
+<tr>
+<td><strong>certType</strong></td>
+<td>是</td>
+<td>app登录用户证件类型</td>
+</tr>
+<tr>
+<td><strong>certNo</strong></td>
+<td>是</td>
+<td>app登录用户证件号码</td>
+</tr>
+<tr>
+<td><strong>custName</strong></td>
+<td>是</td>
+<td>app登录用户姓名</td>
+</tr>
+<tr>
+<td><strong>time</strong></td>
+<td>是</td>
+<td>发起系统时间戳</td>
+</tr>
+</tbody>
+</table>
+<p>####手机银行访问门户报错时错误码信息表</p>
+<table>
+<thead>
+<tr>
+<th><strong>错误码</strong></th>
+<th><strong>错误信息</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>52003</td>
+<td>MD5校验失败</td>
+</tr>
+<tr>
+<td>52004</td>
+<td>RSA解密失败</td>
+</tr>
+<tr>
+<td>52005</td>
+<td>校验串超时</td>
+</tr>
+<tr>
+<td>52006</td>
+<td>json格式不对</td>
+</tr>
+<tr>
+<td>52007</td>
+<td>url重复请求</td>
+</tr>
+<tr>
+<td>52023</td>
+<td>报文数据的不完整错误</td>
+</tr>
+<tr>
+<td>52027</td>
+<td>非法的user-agent</td>
+</tr>
+</tbody>
+</table>
+<h4 id="手机银行提供给门户调用的接口"><a href="#手机银行提供给门户调用的接口" class="headerlink" title="手机银行提供给门户调用的接口"></a>手机银行提供给门户调用的接口</h4><table>
+<thead>
+<tr>
+<th><strong>序号</strong></th>
+<th style="text-align:center"><strong>接口名称</strong></th>
+<th style="text-align:center"><strong>接口提供者</strong></th>
+<th><strong>接口说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">打开app</td>
+<td style="text-align:center">入口app</td>
+<td>H5页面调用该接口打开第三方app</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">下载app</td>
+<td style="text-align:center">入口app</td>
+<td>H5页面调用该接口下载第三方app</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">app返回</td>
+<td style="text-align:center">入口app</td>
+<td>门户调用该接口返回到入口app首屏</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">app登录</td>
+<td style="text-align:center">入口app</td>
+<td>门户调用该接口打开入口app的用户登录界面</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align:center">app分享</td>
+<td style="text-align:center">入口app</td>
+<td>H5页面调用该接口分享指定内容</td>
+</tr>
+</tbody>
+</table>
+<h4 id="打开app接口"><a href="#打开app接口" class="headerlink" title="打开app接口"></a>打开app接口</h4><p>1） 功能描述</p>
+<p>H5页面调用该接口打开第三方app。</p>
+<p>2） 业务场景</p>
+<p>H5页面基于业务需求，打开其他子公司app。例如：门户的金融资讯，当用户点击“更多”时，提示用户“请您前往“兴业研究”客户端，获取更多精彩资讯。”，用户可选择“打开”兴业研究app。</p>
+<p>3） 接口格式说明</p>
+<p><img src="/img/lizd/cib1.png" alt="img"></p>
+<p>4） 接口的JSON参数说明</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名称</strong></th>
+<th><strong>参数类型</strong></th>
+<th><strong>参数说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>iOSScheme</strong></td>
+<td>String</td>
+<td>必选，iOS应用scheme值</td>
+</tr>
+<tr>
+<td><strong>AndroidPackageName</strong></td>
+<td>String</td>
+<td>必选，Android应用包名</td>
+</tr>
+<tr>
+<td><strong>AndroidClassName</strong></td>
+<td>String</td>
+<td>必选，Android应用启动页面类名</td>
+</tr>
+<tr>
+<td><strong>callbackName</strong></td>
+<td>String</td>
+<td>可选，回调方法名（打开失败时，入口app执行H5页面定义的回调方法）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="下载app接口"><a href="#下载app接口" class="headerlink" title="下载app接口"></a>下载app接口</h4><p>1） 功能描述</p>
+<p>H5页面调用该接口下载第三方app（通过打开浏览器下载）。</p>
+<p>2） 业务场景</p>
+<p>H5页面基于业务需求，打开其他子公司app。例如：门户的金融资讯，当用户点击“更多”时，提示用户“请您前往“兴业研究”客户端，获取更多精彩资讯。”，用户可选择“下载”兴业研究app。</p>
+<p>3） 接口格式说明</p>
+<p><img src="/img/lizd/cib2.png" alt="img"></p>
+<p>4） 接口的JSON参数说明</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名称</strong></th>
+<th><strong>参数类型</strong></th>
+<th><strong>参数说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>url</strong></td>
+<td>String</td>
+<td>必选，iOS或Android应用的下载地址</td>
+</tr>
+</tbody>
+</table>
+<h4 id="返回app"><a href="#返回app" class="headerlink" title="返回app"></a>返回app</h4><p>1） 功能描述</p>
+<p>门户调用该接口返回到入口app首屏。</p>
+<p>2） 业务场景</p>
+<p>当门户需要返回到入口app时，调用该接口。</p>
+<p>3） 接口格式说明</p>
+<p><img src="/img/lizd/cib3.png" alt="img"></p>
+<h4 id="登录接口"><a href="#登录接口" class="headerlink" title="登录接口"></a>登录接口</h4><p>1） 功能描述</p>
+<p>门户调用该接口打开入口app的用户登录界面。</p>
+<p>2） 业务场景</p>
+<p>门户允许用户以未登录状态访问，但门户的财富总览和承接页要求用户必须以登录状态访问。所以当未登录的用户要访问财富总览或承接页时，门户会调用入口app的用户登录界面，引导用户进行登录。登录成功后，自动跳转到财富总览或承接页。</p>
+<p>3） 接口格式说明</p>
+<p><img src="/img/lizd/cib4.png" alt="img"></p>
+<p>4） 接口的JSON参数说明</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名称</strong></th>
+<th><strong>参数类型</strong></th>
+<th><strong>参数说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>target</strong></td>
+<td>String</td>
+<td>可选，用户登录成功后跳转到的目标地址（子公司系统编号或财富总览编号）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="分享接口"><a href="#分享接口" class="headerlink" title="分享接口"></a>分享接口</h4><p>1） 功能描述</p>
+<p>H5页面调用该接口分享指定内容。</p>
+<p>2） 业务场景</p>
+<p>门户或子公司基于业务需求，引导用户分享指定的产品服务或营销活动等。</p>
+<p>3） 接口格式说明</p>
+<p><img src="/img/lizd/cib5.png" alt="img"></p>
+<p>4） 接口的JSON参数说明</p>
+<table>
+<thead>
+<tr>
+<th><strong>参数名称</strong></th>
+<th><strong>参数类型</strong></th>
+<th><strong>参数说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>url</strong></td>
+<td>String</td>
+<td>必选，分享内容的URL地址</td>
+</tr>
+<tr>
+<td><strong>title</strong></td>
+<td>String</td>
+<td>必选，分享内容的标题</td>
+</tr>
+<tr>
+<td><strong>description</strong></td>
+<td>String</td>
+<td>可选，分享内容的描述</td>
+</tr>
+<tr>
+<td><strong>picUrl</strong></td>
+<td>String</td>
+<td>可选，分享内容的缩略图地址</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/05/31/menhu/" data-id="cjhu70nhf0000ikydzf1g4nqu" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/">app</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/29/Bootstrap Carousel/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Bootstrap 轮播（Carousel）插件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Hexo</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">li.zhidan</h2>
+    <h3 class="description"></h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>8</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>1</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>3</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="https://github.com/lizhid" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="https://xybank.github.io/" target="_blank" title="Xybk">
+          Xybk
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2017 - 2018 li.zhidan<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="plugin/galmenu/wulusai.mp3"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
