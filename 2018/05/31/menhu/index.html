@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://yoursite.com/img/lizd/cib3.png">
 <meta property="og:image" content="http://yoursite.com/img/lizd/cib4.png">
 <meta property="og:image" content="http://yoursite.com/img/lizd/cib5.png">
-<meta property="og:updated_time" content="2018-05-31T07:00:55.712Z">
+<meta property="og:updated_time" content="2018-05-31T07:08:10.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="手机银行和门户联调功能">
 <meta name="twitter:description" content="简单介绍下当初和门户联调的一些功能。">
@@ -112,22 +112,18 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>简单介绍下当初和门户联调的一些功能。<br><a id="more"></a></p>
-<p>####RSA加密</p>
-<p>手机银行进入多元金融首页需数据加密传入，和门户约定使用RSA加密。门户提供公钥给手机银行对数据进行加密，门户收到数据后用私钥解密。</p>
-<p>####数据验签说明</p>
-<p>1、集团门户为每个子系统分配一个md5key，作为md5摘要计算的盐值。</p>
+<h4 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h4><p>手机银行进入多元金融首页需数据加密传入，和门户约定使用RSA加密。门户提供公钥给手机银行对数据进行加密，门户收到数据后用私钥解密。</p>
+<h4 id="数据验签说明"><a href="#数据验签说明" class="headerlink" title="数据验签说明"></a>数据验签说明</h4><p>1、集团门户为每个子系统分配一个md5key，作为md5摘要计算的盐值。</p>
 <p>2、通信内容MD5签名过程：通信请求方将相关请求参数值做md5计算获取到校验串并发送给通信接收方。</p>
 <p>3、通信内容MD5验签过程：通信接收方将收到的相关请求参数值做md5计算得到校验串，并跟收到的校验串做比对，一致则认为验签成功，不一致则验签失败。</p>
-<p>####时间戳</p>
-<p>手机银行加密的数据拼上请求时的时间戳进行加密。</p>
+<h4 id="时间戳"><a href="#时间戳" class="headerlink" title="时间戳"></a>时间戳</h4><p>手机银行加密的数据拼上请求时的时间戳进行加密。</p>
 <p>1、门户从加密数据内容中获取到手机银行的时间戳T1，以及门户当前系统时间戳T2。</p>
 <p>当满足-10秒&lt;T2-T1&lt;30秒时，认为该请求是有效的，否则为无效。</p>
 <p>2、通信接受方必须实现防重放攻击即收到的同一请求的url（带敏感信息的url），保证第一次收到时才有效。</p>
 <p>3、 通信双方的系统时间保证跟北京时间同步。</p>
 <p>4、手机银行客户端需要自定义请求报文头的user-agent信息，增加请求来源标识，统一为“cibbank”,以此增加授信机制。</p>
 <p>5、门户和子公司交互均使用https协议。</p>
-<h4 id="报文信息详细"><a href="#报文信息详细" class="headerlink" title="报文信息详细"></a>报文信息详细</h4><p>######A01</p>
-<p>1）业务场景</p>
+<h4 id="报文信息详细"><a href="#报文信息详细" class="headerlink" title="报文信息详细"></a>报文信息详细</h4><h6 id="A01"><a href="#A01" class="headerlink" title="A01"></a>A01</h6><p>1）业务场景</p>
 <p>   手机银行已登录用户访问集团门户</p>
 <p>2）请求方式</p>
 <p>https:// app端集团门户入口地址?from=xxx&amp;data=xxx&amp;mac=xxx </p>
@@ -178,8 +174,7 @@
 </tr>
 </tbody>
 </table>
-<p>######A02</p>
-<p>1）业务场景</p>
+<h6 id="A02"><a href="#A02" class="headerlink" title="A02"></a>A02</h6><p>1）业务场景</p>
 <p>   手机银行app未登录用户访问集团门户。</p>
 <p>2）请求方式</p>
 <p>https:// app端集团门户入口地址?from=xxx&amp;data=xxx&amp;mac=xxx</p>
@@ -210,8 +205,7 @@
 </tr>
 </tbody>
 </table>
-<p>######AA1</p>
-<p>1）业务场景</p>
+<h6 id="AA1"><a href="#AA1" class="headerlink" title="AA1"></a>AA1</h6><p>1）业务场景</p>
 <p>   手机银行app已登录用户访问财富总览(提供给原手机银行财富总览功能跳转使用，门户接受请求后响应财富总览功能页，并且返回直接回到APP)</p>
 <p>2）请求方式</p>
 <p>https:// app端集团门户入口地址?from=xxx&amp;data=xxx&amp;mac=xxx</p>
@@ -257,8 +251,7 @@
 </tr>
 </tbody>
 </table>
-<p>####手机银行访问门户报错时错误码信息表</p>
-<table>
+<h4 id="手机银行访问门户报错时错误码信息表"><a href="#手机银行访问门户报错时错误码信息表" class="headerlink" title="手机银行访问门户报错时错误码信息表"></a>手机银行访问门户报错时错误码信息表</h4><table>
 <thead>
 <tr>
 <th><strong>错误码</strong></th>
@@ -470,7 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/05/31/menhu/" data-id="cjhu70nhf0000ikydzf1g4nqu" class="article-share-link">分享</a>
+      <a data-url="http://yoursite.com/2018/05/31/menhu/" data-id="cjhu77bwu000060yds6f0sb3s" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/app/">app</a></li></ul>
